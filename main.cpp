@@ -30,29 +30,18 @@ int choose_age_animal(){
     return seniority;   
 }
 
+int choose_food(){
+    int food = 0;
+    cout << "1. Buy meat?\n2. Buy seed?" << endl;
+    cin >> food;
+    return food;
+}
+
 int main(){
     string zoo_name = "";
     cin >> zoo_name;
     Zoo* zoo(zoo_name);
-    Male_tiger* pumba("pumba", 24);
-    Female_tiger* tigresse("tigresse", 72);
-    Female_tiger* tatigresse("tatigresse", 36);
-    Male_eagle* eagloo("eagloo", 48);
-    Male_eagle* glouglou("glouglou", 36);
-    Female_eagle* lapiaf("lapiaf", 168);
-    Female_eagle* lapignouf("lapignouf", 60);
-    Rooster* fried_chicken("fried_chicken", 6);
-    Chicken* poulette("poulette", 6);
-    Chicken* poule("poule", 5);
-    Chicken* poulet("poulet", 7);
-    Chicken* oulet("oulet", 1);
-    Chicken* ctropbon("ctropbon", 2);
-    Chicken* kfc("kfc", 3);
-    Chicken* bucket("bucket", 4);
-    Chicken* roti("roti", 8);
-    Chicken* teriyaki("teriyaki", 9);
-    Chicken* braise("braise", 10);
-    
+
     while(1){
         int action = 0;
         cout << "Choose an action:\n1. Buy/Sell animal\n2. Buy food\n3. Buy/Sell habitat\n4. Next turn" << endl;
@@ -64,76 +53,97 @@ int main(){
             switch(choose_animal())
             {
                 case 1:
+                string tiger_name = ""; // ici on demande le nom avant le genre. Pas logique mais ça prend moins de lignes.
+                cout << "Choose name: ";
+                cin >> tiger_name;
                 if(genre_animal()==1){
-                    string tiger_name = "";
-                    cout << "Choose name: ";
-                    cin >> tiger_name;
                     if(choose_age_animal()==1){
-                        Male_tiger* tigrou(tiger_name, 168);
+                        Male_tiger* old_tiger = new Male_tiger(tiger_name, 168);
+                        zoo->buyAnimal(old_tiger);
+                        // afficher les sous en moins quand on buy un animal
+                        // afficher les caractéristiques de l'animal ???
                     }else if(choose_age_animal()==2){
-                        Male_tiger* tigrou(tiger_name, 48);                       
+                        Male_tiger* tiger = new Male_tiger(tiger_name, 48);
+                        zoo->buyAnimal(tiger);                       
                     }else{
-                        Male_tiger* tigrou(tiger_name, 6); 
+                        Male_tiger* young_tiger = new Male_tiger(tiger_name, 6); 
+                        zoo->buyAnimal(young_tiger);                       
                     }
                 }else{
-                    string tiger_name = "";
-                    cout << "Choose name: ";
-                    cin >> tiger_name;
                     if(choose_age_animal()==1){
-                        Female_tiger* tatigresse(tiger_name, 168);
+                        Female_tiger* old_tatigresse = new Female_tiger(tiger_name, 168);
+                        zoo->buyAnimal(old_tatigresse);                       
                     }else if(choose_age_animal()==2){
-                        Female_tiger* tatigresse(tiger_name, 48);                       
+                        Female_tiger* tatigresse = new Female_tiger(tiger_name, 48);    
+                        zoo->buyAnimal(tatigresse);                       
                     }else{
-                        Female_tiger* tatigresse(tiger_name, 6);                       
+                        Female_tiger* young_tatigresse = new Female_tiger(tiger_name, 6);                       
+                        zoo->buyAnimal(young_tatigresse);                       
                     }
                 }
                 break;
                 case 2:
+                string eagle_name = "";
+                cout << "Choose name: ";
+                cin >> eagle_name;
                 if(genre_animal()==1){
-                    string eagle_name = "";
-                    cout << "Choose name: ";
-                    cin >> eagle_name;
                     if(choose_age_animal()==1){
-                        Male_eagle* eagloo(eagle_name, 168);
+                        Male_eagle* old_eagloo = new Male_eagle(eagle_name, 168);
+                        zoo->buyAnimal(old_eagloo);
                     }else if(choose_age_animal()==2){
-                        Male_eagle* eagloo(eagle_name, 48);
+                        Male_eagle* eagloo = new Male_eagle(eagle_name, 48);
+                        zoo->buyAnimal(eagloo);
                     }else{
-                        Male_eagle* eagloo(eagle_name, 6);
+                        Male_eagle* young_eagloo = new Male_eagle(eagle_name, 6);
+                        zoo->buyAnimal(young_eagloo);
                     }
                 }else{
-                    string eagle_name = "";
-                    cout << "Choose name: ";
-                    cin >> eagle_name;
                     if(choose_age_animal()==1){
-                        Female_eagle* lapiaf(eagle_name, 168);
+                        Female_eagle* old_lapiaf = new Female_eagle(eagle_name, 168);
+                        zoo->buyAnimal(old_lapiaf);
                     }else if(choose_age_animal()==2){
-                        Female_eagle* lapiaf(eagle_name, 48);                       
+                        Female_eagle* lapiaf = new Female_eagle(eagle_name, 48);
+                        zoo->buyAnimal(lapiaf);                       
                     }else{
-                        Female_eagle* lapiaf(eagle_name, 6);
+                        Female_eagle* young_lapiaf = new Female_eagle(eagle_name, 6);
+                        zoo->buyAnimal(young_lapiaf);
                     }
                 }
                 break;
                 case 3:
+                string chicken_name = "";
+                cout << "Choose name: ";
+                cin >> chicken_name;
                 if(genre_animal()==1){
-                    string rooster_name = "";
-                    cout << "Choose name: ";
-                    cin >> rooster_name;
-                    Rooster* fried_chicken(rooster_name, 6);
+                    Rooster* fried_chicken = new Rooster(chicken_name, 6);
+                    zoo->buyAnimal(fried_chicken);
                 }else{
-                    string chicken_name = "";
-                    cout << "Choose name: ";
-                    cin >> chicken_name;
-                    Chicken* poulette(chicken_name, 6);
+                    Chicken* poulette = new Chicken(chicken_name, 6);
+                    zoo->buyAnimal(poulette);
                 }
                 break;
             }
         }else{
-            //coder la revente d'un animal
+            // coder la revente d'un animal
         }
             break;
+        case 2:
+        int kilos = 0;
+        cout << "How many kilos do you want to buy?" << endl;
+        cin >> kilos;
+        if(choose_food()==1){
+            Meat* meat = new Meat(kilos);
+            zoo->buyFood(meat);
+            // afficher les sous en moins quand on buy de la nourriture
+        }else{
+            Seed* seed = new Seed(kilos);
+            zoo->buyFood(seed);
+        }
+
         default:
             break;
         }
+
     };
     return 0;
 }
