@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int buy_sell_animal(){
+int buy_sell(){
     int buy_sell = 0;
     cout << "1. Do you want to buy ?\n2. Or sell ?" << endl;
     cin >> buy_sell;
@@ -11,7 +11,7 @@ int buy_sell_animal(){
 
 int choose_animal(){
     int animal = 0;
-    cout << "1. Do you want a tiger?\n2. Do you want a eagle?\n3. Do you want a chicken?" << endl;
+    cout << "1. A tiger?\n2. A eagle?\n3. A chicken?" << endl;
     cin >> animal;
     return animal;
 }
@@ -43,15 +43,15 @@ int main(){
     Zoo* zoo(zoo_name);
 
     while(1){
+        // scénario type : 2 couples... (du coup faire une boucle ou condition quelque part)
         int action = 0;
         cout << "Choose an action:\n1. Buy/Sell animal\n2. Buy food\n3. Buy/Sell habitat\n4. Next turn" << endl;
         cin >> action;
         switch (action)
         {
         case 1:
-        if(buy_sell_animal()==1){
-            switch(choose_animal())
-            {
+        if(buy_sell()==1){
+            switch(choose_animal()){
                 case 1:
                 string tiger_name = ""; // ici on demande le nom avant le genre. Pas logique mais ça prend moins de lignes.
                 cout << "Choose name: ";
@@ -124,9 +124,9 @@ int main(){
                 break;
             }
         }else{
-            // coder la revente d'un animal
+            zoo->sell_animal(zoo->get_animal_to_sell);
         }
-            break;
+        break;
         case 2:
         int kilos = 0;
         cout << "How many kilos do you want to buy?" << endl;
@@ -139,11 +139,33 @@ int main(){
             Seed* seed = new Seed(kilos);
             zoo->buyFood(seed);
         }
-
+        case 3:
+        if(buy_sell()==1){
+            cout << "Do you want to buy a habitat for which animal?" << endl;
+            switch(choose_animal()){
+                case 1:
+                Habitat* tiger_cage = new Habitat("tiger_cage");
+                zoo->buy_habitat(tiger_cage);
+                break; 
+                case 2:
+                Habitat* eagle_cage = new Habitat("eagle_cage");
+                zoo->buy_habitat(eagle_cage);
+                break;
+                case 3:
+                Habitat* chicken_cage = new Habitat("chicken_cage");
+                zoo->buy_habitat(eagle_cage);
+                break; 
+            }
+        }else{
+            zoo->sell_habitat(zoo->get_habitat_to_sell);
+        }
+        case 4:
+        continue;
+        break;
         default:
+        // idk quoi mettre
             break;
         }
-
     };
     return 0;
 }
