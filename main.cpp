@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "zoo.h"
+#include "male_tiger.h"
 
 using namespace std;
 
@@ -40,9 +41,9 @@ int choose_food(){
 }
 
 int main(){
-    string zoo_name = "";
+    string zoo_name;
     cin >> zoo_name;
-    Zoo* zoo(zoo_name);
+    Zoo* zoo = new Zoo(zoo_name);
 
     while(1){
         // scénario type : 2 couples... (du coup faire une boucle ou condition quelque part)
