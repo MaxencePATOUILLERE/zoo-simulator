@@ -7,6 +7,8 @@
 #include "female_eagle.h"
 #include "rooster.h"
 #include "chicken.h"
+#include "meat.h"
+#include "seed.h"
 
 using namespace std;
 
@@ -158,6 +160,7 @@ int main(){
                 case 1:
                 Habitat* tiger_cage = new Habitat("tiger_cage");
                 zoo->buy_habitat(tiger_cage);
+                // afficher les sous en moins quand on buy un habitat
                 break; 
                 case 2:
                 Habitat* eagle_cage = new Habitat("eagle_cage");
