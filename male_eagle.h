@@ -3,10 +3,10 @@
 
 using namespace std;
 
-class Male_tiger : public Animal{
+class Male_eagle : public Animal{
 
 public:
-    Male_tiger(string name, int age_month)
+    Male_eagle(string name, int age_month)
     :Animal(name, age_month){};
     virtual int estimateBuyPrice();
     virtual int getAge();

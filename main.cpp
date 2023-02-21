@@ -2,6 +2,11 @@
 #include <string>
 #include "zoo.h"
 #include "male_tiger.h"
+#include "female_tiger.h"
+#include "male_eagle.h"
+#include "female_eagle.h"
+#include "rooster.h"
+#include "chicken.h"
 
 using namespace std;
 
@@ -127,7 +132,7 @@ int main(){
                 break;
             }
         }else{
-            zoo->sell_animal(zoo->get_animal_to_sell);
+            zoo->sellAnimal(zoo->get_animal_to_sell);
         }
         break;
         case 2:
