@@ -1,3 +1,6 @@
+#ifndef FOOD_H
+#define FOOD_H
+
 #include <string>
 
 using namespace std;
@@ -9,3 +12,5 @@ public:
     Food(int kilos):m_kilos(kilos){};
     virtual int estimateBuyPrice()=0;
 };
+
+#endif

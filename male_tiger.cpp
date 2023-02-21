@@ -1,5 +1,6 @@
 #include "male_tiger.h"
 
+
 int Male_tiger::estimateBuyPrice() {
     if (getAge() <= 6){
         return 3000;
