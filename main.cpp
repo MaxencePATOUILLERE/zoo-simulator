@@ -132,7 +132,11 @@ int main(){
                 break;
             }
         }else{
-            zoo->sellAnimal(zoo->get_animal_to_sell);
+            // Je verrai bien un truc du genre : ici on affiche tous les animaux qu'il y a dans le zoo
+            // ici on récupère un int (maybe via une méthode "zoo->get_animal_to_sell") correspondant à l'animal que l'on veut retirer de la slice
+            // on stock le résultat de la méthode dans une variable
+            // ici on appelle une méthode qui va supprimer l'animal choisit dans la slice (maybe "zoo->sellAnimal(zoo->get_animal_to_sell(variable))")
+            // si tu vois autre chose, n'hésite pas à share
         }
         break;
         case 2:
