@@ -1,5 +1,7 @@
 #include <string>
 #include "animal.h"
+#include "food.h"
+#include "habitat.h"
 
 using namespace std;
 
@@ -9,4 +11,7 @@ public:
     Zoo(string name):m_name(name){};
     void buyAnimal(Animal* animal);
     void sellAnimal(Animal* animal);
+    void buyFood(Food* food);
+    void buyHabitat(Habitat* habitat);
+    void sellHabitat(Habitat* habitat);
 };

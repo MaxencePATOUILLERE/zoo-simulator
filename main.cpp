@@ -144,6 +144,8 @@ int main(){
                     // on stock le résultat de la méthode dans une variable
                     // ici on appelle une méthode qui va supprimer l'animal choisit dans la slice (maybe "zoo->sellAnimal(zoo->get_animal_to_sell(variable))")
                     // si tu vois autre chose, n'hésite pas à share
+
+                    // faire pareil pour l'argent gagné
                 }
                 break;
             }
@@ -165,21 +167,22 @@ int main(){
                     cout << "Do you want to buy a habitat for which animal?" << endl;
                     switch(choose_animal()){
                         case 1:
-                            Tiger_cage* tiger_cage = new Tiger_cage("tiger_cage");
-                            zoo->buy_habitat(tiger_cage);
+                            Tiger_cage* tiger_cage = new Tiger_cage("tiger_cage",2000,2);
+                            zoo->buyHabitat(tiger_cage);
                             // afficher les sous en moins quand on buy un habitat
                             break;
                         case 2:
-                            Eagle_cage* eagle_cage = new Eagle_cage("eagle_cage");
-                            zoo->buy_habitat(eagle_cage);
+                            Eagle_cage* eagle_cage = new Eagle_cage("eagle_cage",2000,4);
+                            zoo->buyHabitat(eagle_cage);
                             break;
                         case 3:
-                            Chicken_cage* chicken_cage = new Chicken_cage("chicken_cage");
-                            zoo->buy_habitat(eagle_cage);
+                            Chicken_cage* chicken_cage = new Chicken_cage("chicken_cage",300,10);
+                            zoo->buyHabitat(eagle_cage);
                             break;
                     }
                 }else{
-                    zoo->sell_habitat(zoo->get_habitat_to_sell);
+                    // pareil que le pavé plus haut pour la vente d'animal
+                    //zoo->sellHabitat(zoo->get_habitat_to_sell);
                 }
             }
             case 4:
