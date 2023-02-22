@@ -9,6 +9,9 @@
 #include "chicken.h"
 #include "meat.h"
 #include "seed.h"
+#include "tiger_cage.h"
+#include "eagle_cage.h"
+#include "chicken_cage.h"
 
 using namespace std;
 
@@ -162,16 +165,16 @@ int main(){
                     cout << "Do you want to buy a habitat for which animal?" << endl;
                     switch(choose_animal()){
                         case 1:
-                            Habitat* tiger_cage = new Habitat("tiger_cage");
+                            Tiger_cage* tiger_cage = new Tiger_cage("tiger_cage");
                             zoo->buy_habitat(tiger_cage);
                             // afficher les sous en moins quand on buy un habitat
                             break;
                         case 2:
-                            Habitat* eagle_cage = new Habitat("eagle_cage");
+                            Eagle_cage* eagle_cage = new Eagle_cage("eagle_cage");
                             zoo->buy_habitat(eagle_cage);
                             break;
                         case 3:
-                            Habitat* chicken_cage = new Habitat("chicken_cage");
+                            Chicken_cage* chicken_cage = new Chicken_cage("chicken_cage");
                             zoo->buy_habitat(eagle_cage);
                             break;
                     }

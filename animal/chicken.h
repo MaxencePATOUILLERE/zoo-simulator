@@ -4,7 +4,6 @@
 using namespace std;
 
 class Chicken : public Animal{
-
 public:
     Chicken(string name, int age_month)
     :Animal(name, age_month){};
