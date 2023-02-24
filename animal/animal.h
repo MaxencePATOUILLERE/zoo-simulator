@@ -1,3 +1,6 @@
+#ifndef ANIMAL_H
+#define ANIMAL_H
+
 #include <string>
 
 using namespace std;
@@ -11,3 +14,5 @@ public:
     virtual int estimateBuyPrice()=0;
     virtual int getAge()=0;
 };
+
+#endif

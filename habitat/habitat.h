@@ -1,3 +1,6 @@
+#ifndef HABITAT_H
+#define HABITAT_H
+
 #include <string>
 
 using namespace std;
@@ -12,3 +15,5 @@ public:
     virtual int estimateSellPrice()=0;
     virtual int getCapacity()=0;
 };
+
+#endif

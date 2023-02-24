@@ -1,17 +1,17 @@
 #include <iostream>
 #include <string>
 #include "zoo.h"
-#include "male_tiger.h"
-#include "female_tiger.h"
-#include "male_eagle.h"
-#include "female_eagle.h"
-#include "rooster.h"
-#include "chicken.h"
-#include "meat.h"
-#include "seed.h"
-#include "tiger_cage.h"
-#include "eagle_cage.h"
-#include "chicken_cage.h"
+#include "./animal/male_tiger.h"
+#include "./animal/female_tiger.h"
+#include "./animal/male_eagle.h"
+#include "./animal/female_eagle.h"
+#include "./animal/rooster.h"
+#include "./animal/chicken.h"
+#include "./food/meat.h"
+#include "./food/seed.h"
+#include "./habitat/tiger_cage.h"
+#include "./habitat/eagle_cage.h"
+#include "./habitat/chicken_cage.h"
 
 using namespace std;
 
@@ -166,19 +166,22 @@ int main(){
                 if(buy_sell()==1){
                     cout << "Do you want to buy a habitat for which animal?" << endl;
                     switch(choose_animal()){
-                        case 1:
-                            Tiger_cage* tiger_cage = new Tiger_cage("tiger_cage",2000,2);
+                        case 1: {
+                            Tiger_cage *tiger_cage = new Tiger_cage("tiger_cage", 2000, 2);
                             zoo->buyHabitat(tiger_cage);
                             // afficher les sous en moins quand on buy un habitat
                             break;
-                        case 2:
+                        }
+                        case 2:{
                             Eagle_cage* eagle_cage = new Eagle_cage("eagle_cage",2000,4);
                             zoo->buyHabitat(eagle_cage);
                             break;
-                        case 3:
+                        }
+                        case 3:{
                             Chicken_cage* chicken_cage = new Chicken_cage("chicken_cage",300,10);
-                            zoo->buyHabitat(eagle_cage);
+                            zoo->buyHabitat(chicken_cage);
                             break;
+                        }
                     }
                 }else{
                     // pareil que le pavé plus haut pour la vente d'animal

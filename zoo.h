@@ -1,7 +1,10 @@
+#ifndef ZOO_H
+#define ZOO_H
+
 #include <string>
-#include "animal.h"
-#include "food.h"
-#include "habitat.h"
+#include "./animal/animal.h"
+#include "./food/food.h"
+#include "./habitat/habitat.h"
 
 using namespace std;
 
@@ -15,3 +18,5 @@ public:
     void buyHabitat(Habitat* habitat);
     void sellHabitat(Habitat* habitat);
 };
+
+#endif
