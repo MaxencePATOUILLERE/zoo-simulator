@@ -56,7 +56,6 @@ int main(){
     Zoo* zoo = new Zoo(zoo_name);
 
     while(1){
-        // scénario type : 2 couples... (du coup faire une boucle ou condition quelque part)
         int action = 0;
         cout << "Choose an action:\n1. Buy/Sell animal\n2. Buy food\n3. Buy/Sell habitat\n4. Next turn" << endl;
         cin >> action;

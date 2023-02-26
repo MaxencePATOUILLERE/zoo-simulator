@@ -12,7 +12,6 @@ public:
     :Habitat(name, price, capacity){};
     virtual int estimateBuyPrice();
     virtual int estimateSellPrice();
-    virtual int getCapacity();
 };
 
 #endif
