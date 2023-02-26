@@ -1,3 +1,6 @@
+#ifndef CHICKEN_CAGE_H
+#define CHICKEN_CAGE_H
+
 #include "string"
 #include "habitat.h"
 
@@ -11,3 +14,5 @@ public:
     virtual int estimateSellPrice();
     virtual int getCapacity();
 };
+
+#endif

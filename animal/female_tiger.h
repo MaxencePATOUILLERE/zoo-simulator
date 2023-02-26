@@ -1,3 +1,6 @@
+#ifndef FEMALE_TIGER_H
+#define FEMALE_TIGER_H
+
 #include "string"
 #include "animal.h"
 
@@ -9,5 +12,6 @@ public:
     Female_tiger(string name, int age_month)
     :Animal(name, age_month){};
     virtual int estimateBuyPrice();
-    virtual int getAge();
 };
+
+#endif

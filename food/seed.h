@@ -1,3 +1,6 @@
+#ifndef SEED_H
+#define SEED_H
+
 #include "string"
 #include "food.h"
 
@@ -10,3 +13,5 @@ public:
     :Food(kilos){m_kilos = kilos;};
     virtual int estimateBuyPrice();
 };
+
+#endif

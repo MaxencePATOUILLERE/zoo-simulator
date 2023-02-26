@@ -1,3 +1,6 @@
+#ifndef CHICKEN_H
+#define CHICKEN_H
+
 #include "string"
 #include "animal.h"
 
@@ -8,5 +11,6 @@ public:
     Chicken(string name, int age_month)
     :Animal(name, age_month){};
     virtual int estimateBuyPrice();
-    virtual int getAge(); //pas utilisée, mais si on la met pas->erreur dans le main
 };
+
+#endif

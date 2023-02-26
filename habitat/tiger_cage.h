@@ -1,3 +1,6 @@
+#ifndef TIGER_CAGE_H
+#define TIGER_CAGE_H
+
 #include "string"
 #include "habitat.h"
 
@@ -11,3 +14,5 @@ public:
     virtual int estimateSellPrice();
     virtual int getCapacity();
 };
+
+#endif
