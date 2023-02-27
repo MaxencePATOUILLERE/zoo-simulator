@@ -70,10 +70,14 @@ int main(){
                             cin >> tiger_name;
                             if (genre_animal() == 1) {
                                 if (choose_age_animal() == 1) {
-                                    Male_tiger *old_tiger = new Male_tiger(tiger_name, 168);
-                                    zoo->buyAnimal(old_tiger);
-                                    // afficher les sous en moins quand on buy un animal
-                                    // afficher les caractéristiques de l'animal ???
+                                    if (zoo->canBuy(tiger,168)){
+                                        Male_tiger *old_tiger = new Male_tiger(tiger_name, 168);
+                                        zoo->buyAnimal(old_tiger);
+                                        cout << "You have:" << zoo->getMoney() << "money" << endl;
+                                        cout << "Your tiger name's: " << old_tiger->getName() << "and he's old is: " << old_tiger->getAge() << endl;
+                                    } else {
+                                        cout << "You don't have enough money" << endl;
+                                    }
                                 } else if (choose_age_animal() == 2) {
                                     Male_tiger *tiger = new Male_tiger(tiger_name, 48);
                                     zoo->buyAnimal(tiger);
@@ -144,7 +148,6 @@ int main(){
                     // on stock le résultat de la méthode dans une variable
                     // ici on appelle une méthode qui va supprimer l'animal choisit dans la slice (maybe "zoo->sellAnimal(zoo->get_animal_to_sell(variable))")
                     // si tu vois autre chose, n'hésite pas à share
-
                     // faire pareil pour l'argent gagné
                 }
                 break;
