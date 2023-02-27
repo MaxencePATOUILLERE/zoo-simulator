@@ -1,14 +1,15 @@
-#ifndef CHICKEN_H
-#define CHICKEN_H
+#ifndef EAGLE_H
+#define EAGLE_H
 
 #include "string"
 #include "animal.h"
 
 using namespace std;
 
-class Chicken : public Animal{
+class Eagle : public Animal{
+
 public:
-    Chicken(bool male, string name, int age_month)
+    Eagle(bool male, string name, int age_month)
     :Animal(male, name, age_month){};
     virtual int estimateBuyPrice();
 };

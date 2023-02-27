@@ -1,7 +1,7 @@
-#include "male_tiger.h"
+#include "tiger.h"
 
 
-int Male_tiger::estimateBuyPrice() {
+int Tiger::estimateBuyPrice() {
     if (getAge() <= 6){
         return 3000;
     }

@@ -1,6 +1,6 @@
-#include "female_eagle.h"
+#include "eagle.h"
 
-int Female_eagle::estimateBuyPrice() {
+int Eagle::estimateBuyPrice() {
     if (getAge() <= 6){
         return 1000;
     }

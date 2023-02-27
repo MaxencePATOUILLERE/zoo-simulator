@@ -1,5 +1,8 @@
 #include "chicken.h"
 
 int Chicken::estimateBuyPrice() {
-   return 20;
+   if (isMale()==true){
+       return 100;
+   }
+    return 20;
 }
