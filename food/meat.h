@@ -12,5 +12,7 @@ public:
     Meat(int kilos)
     :Food(kilos){m_kilos = kilos;};
     virtual int estimateBuyPrice();
+    void setkilos(int kilos);
+
 };
 #endif

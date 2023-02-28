@@ -2,6 +2,8 @@
 #include "tiger.h"
 #include "chicken.h"
 #include "eagle.h"
+#include "meat.h"
+#include "seed.h"
 #include <iostream>
 
 using namespace std;
@@ -113,4 +115,17 @@ vector<int> Zoo::showSpecificHabitat(Animal *animal) {
         }
     }
     return specificHabitat;
+}
+
+bool Zoo::haveFood(string foodname) {
+    if (foods.empty()){
+        return false;
+    }
+    if ((dynamic_cast<Meat *>(foods[0])!= nullptr && foodname=="meat")||(dynamic_cast<Seed *>(foods[0])!= nullptr && foodname=="seed")){
+        return true;
+    }else if (foods.size()==2 && (dynamic_cast<Meat *>(foods[1])!= nullptr && foodname=="meat")||(dynamic_cast<Seed *>(foods[1])!= nullptr && foodname=="seed")) {
+        return true;
+    }else{
+        return false;
+    }
 }

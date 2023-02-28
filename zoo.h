@@ -14,11 +14,13 @@ class Zoo{
     string m_name;
     int m_money;
     vector<Habitat*>habitats;
+    vector<Food*>foods;
 public:
     Zoo(string name,int money):m_name(name),m_money(money){};
     void buyAnimal(Animal* animal);
     void sellAnimal(Animal* animal);
     void buyFood(Food* food);
+    bool haveFood(string foodname);
     void buyHabitat(Habitat* habitat);
     void sellHabitat(Habitat* habitat);
     bool canBuyAnimal(Animal* animal);
