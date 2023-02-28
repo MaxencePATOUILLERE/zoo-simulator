@@ -10,7 +10,7 @@ class Eagle : public Animal{
 
 public:
     Eagle(bool male, string name, int age_month)
-    :Animal(male, name, age_month){};
+    :Animal(male, name, age_month, 10){};
     virtual int estimateBuyPrice();
 };
 

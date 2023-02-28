@@ -14,3 +14,7 @@ bool Animal::isMale() {
     }
     return false;
 }
+
+int Animal::getChanceSick() {
+    return m_chanceSick;
+}

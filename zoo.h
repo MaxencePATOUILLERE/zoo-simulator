@@ -2,6 +2,7 @@
 #define ZOO_H
 
 #include <string>
+#include <list>
 #include <vector>
 #include "./animal/animal.h"
 #include "./food/food.h"
@@ -20,8 +21,11 @@ public:
     void buyFood(Food* food);
     void buyHabitat(Habitat* habitat);
     void sellHabitat(Habitat* habitat);
-    bool canBuy(Animal* animal);
+    bool canBuyAnimal(Animal* animal);
+    bool canBuyHabitat(Habitat* habitat);
     int getMoney();
+    bool checkHabitat(Animal* animal);
+    vector<int> showSpecificHabitat(Animal* animal);
 };
 
 #endif

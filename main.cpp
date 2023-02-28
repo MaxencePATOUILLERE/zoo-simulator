@@ -151,6 +151,7 @@ int main() {
                             break;
                         }
                     }
+                    
                 } else {
                     // pareil que le pavé plus haut pour la vente d'animal
                     //zoo->sellHabitat(zoo->get_habitat_to_sell);
@@ -159,8 +160,6 @@ int main() {
             case 4:
                 continue;
         }
-
     }
-
     return 0;
 }
