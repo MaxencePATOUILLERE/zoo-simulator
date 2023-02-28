@@ -61,7 +61,6 @@ void Zoo::buyHabitat(Habitat *habitat) {
 };
 
 void Zoo::sellHabitat(Habitat *habitat) {
-
 }
 
 bool Zoo::canBuyAnimal(Animal *animal) {
