@@ -12,14 +12,14 @@ using namespace std;
 
 class Zoo{
     string m_name;
-    int m_money;
+    double m_money;
     vector<Habitat*>habitats;
     vector<Food*>foods;
 public:
     Zoo(string name,int money):m_name(name),m_money(money){};
     void buyAnimal(Animal* animal);
     void sellAnimal(Animal* animal);
-    void buyFood(Food* food);
+    void buyFood(string foodname, int kilo);
     bool haveFood(string foodname);
     void buyHabitat(Habitat* habitat);
     void sellHabitat(Habitat* habitat);
@@ -28,6 +28,7 @@ public:
     int getMoney();
     bool checkHabitat(Animal* animal);
     vector<int> showSpecificHabitat(Animal* animal);
+    void initFood();
 };
 
 #endif

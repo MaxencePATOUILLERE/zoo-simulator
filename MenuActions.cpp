@@ -73,6 +73,7 @@ void MenuActions::createZoo() {
     cin >> zoo_name;
     Zoo *zoo = new Zoo(zoo_name, 80000);
     m_zoo = zoo;
+    m_zoo->initFood();
 }
 
 void MenuActions::buyAnimal() {
@@ -111,15 +112,9 @@ void MenuActions::buyFood() {
     cout << "How many kilos do you want to buy?" << endl;
     cin >> kilos;
     if (MenuActions::choose_food() == 1) {
-        if (m_zoo->haveFood("meat")==false){
-            //en gros faire en sorte qu'il y a deja meat et seed dans le tableau mais avec 0 kilo et can on appel buy food ca ajoute des kilos plutot que d'ajouter la nourritur
-            Meat *meat = new Meat(kilos);
-        }
-        m_zoo->buyFood(meat);
-        // afficher les sous en moins quand on buy de la nourriture
-    } else {
-        Seed *seed = new Seed(kilos);
-        m_zoo->buyFood(seed);
+        m_zoo->buyFood("meat", kilos);
+    }else{
+        m_zoo->buyFood("seed",kilos);
     }
 }
 

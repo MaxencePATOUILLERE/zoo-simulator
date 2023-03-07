@@ -43,11 +43,31 @@ void Zoo::buyAnimal(Animal *animal) {
 }
 
 void Zoo::sellAnimal(Animal *animal) {
-
 }
 
-void Zoo::buyFood(Food *food) {
-
+void Zoo::buyFood(string foodname, int kilos) {
+    if (foodname=="meat"){
+        if (getMoney() >=  5*kilos){
+            cout << kilos << endl;
+            foods[0]->addKilos(kilos);
+            m_money-=5*kilos;
+            cout << "You have: " << getMoney() << "money" << endl;
+            cout << "You have: " << foods[0]->getKilos() << " kg of meat now" << endl;
+        }else{
+            cout << "You have don't have enough money" << endl;
+        }
+    }
+    if (foodname=="seed") {
+        if (getMoney() >= 2.5 * kilos) {
+            cout << kilos << endl;
+            foods[1]->addKilos(kilos);
+            m_money -= 2.5 * kilos;
+            cout << "You have: " << getMoney() << " money" << endl;
+            cout << "You have: " << foods[1]->getKilos() << " kg of seed now" << endl;
+        } else {
+            cout << "You have don't have enough money" << endl;
+        }
+    }
 }
 
 void Zoo::buyHabitat(Habitat *habitat) {
@@ -117,15 +137,10 @@ vector<int> Zoo::showSpecificHabitat(Animal *animal) {
     return specificHabitat;
 }
 
-bool Zoo::haveFood(string foodname) {
-    if (foods.empty()){
-        return false;
-    }
-    if ((dynamic_cast<Meat *>(foods[0])!= nullptr && foodname=="meat")||(dynamic_cast<Seed *>(foods[0])!= nullptr && foodname=="seed")){
-        return true;
-    }else if (foods.size()==2 && (dynamic_cast<Meat *>(foods[1])!= nullptr && foodname=="meat")||(dynamic_cast<Seed *>(foods[1])!= nullptr && foodname=="seed")) {
-        return true;
-    }else{
-        return false;
-    }
+
+void Zoo::initFood() {
+    Meat *meat = new Meat(0);
+    Seed *seed = new Seed(0);
+    foods.push_back(meat);
+    foods.push_back(seed);
 }

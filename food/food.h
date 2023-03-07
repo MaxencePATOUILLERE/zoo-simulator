@@ -10,7 +10,9 @@ class Food{
     int m_price=0; // pas utilisé
 public:
     Food(int kilos):m_kilos(kilos){};
-    virtual int estimateBuyPrice()=0;
+    void addKilos(int kilos);
+    int getKilos();
+    //virtual void setKilos();
 };
 
 #endif
