@@ -160,6 +160,7 @@ void MenuActions::chooseAction() {
             break;
         }
         case 4:{
+            m_zoo.
         }
     }
 }

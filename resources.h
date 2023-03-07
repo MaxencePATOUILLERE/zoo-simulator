@@ -5,11 +5,15 @@
 
 using namespace std;
 
-class Resources{
+class Time{
+    int m_day;
     int m_month;
-    int m_price;
 public:
-int getPrice();
+    Time(int day, int month) : m_day(day), m_month(month) {}
+    int getDay() const { return m_day; }
+    int getMonth() const { return m_month; }
+    void setDay(int day);
+    void setMonth(int month) { m_month = month; }
 };
 
 #endif

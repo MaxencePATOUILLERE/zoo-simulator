@@ -144,3 +144,14 @@ void Zoo::initFood() {
     foods.push_back(meat);
     foods.push_back(seed);
 }
+
+void Zoo::addMonth() {
+    for (int i = 1; i < 31; i++){
+        m_time->setDay(1)
+        checkAnimal();
+        //nourrire donner faim ou les tuers si elle est en gestation si elle est malade
+        // ajouter Time à chaque animaux
+    }
+    // getmonthinstring si le mois est égale 5-6-7-8-9
+    // random int pour savoir combien de visiteur donc combien de revenu
+}
