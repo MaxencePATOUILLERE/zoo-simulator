@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "zoo.h"
 #include "tiger.h"
 #include "chicken.h"
@@ -5,6 +6,7 @@
 #include "meat.h"
 #include "seed.h"
 #include <iostream>
+
 
 using namespace std;
 
@@ -147,11 +149,19 @@ void Zoo::initFood() {
 
 void Zoo::addMonth() {
     for (int i = 1; i < 31; i++){
-        m_time->setDay(1)
-        checkAnimal();
+        m_time->setDay(1);
+        //checkAnimal();
         //nourrire donner faim ou les tuers si elle est en gestation si elle est malade
-        // ajouter Time à chaque animaux
     }
-    // getmonthinstring si le mois est égale 5-6-7-8-9
-    // random int pour savoir combien de visiteur donc combien de revenu
+    /*
+    int visitor_number;
+     a refaire
+    if (m_time->getMonth()==5 || m_time->getMonth()==6 || m_time->getMonth()==7 || m_time->getMonth()==8 || m_time->getMonth()==9){
+        visitor_number = rand() % 500 + 900;
+    }else{
+        visitor_number = rand() % 200 + 400;
+    }
+    m_money+= visitor_number * 60;
+     */
 }
+

@@ -2,6 +2,7 @@
 #define ANIMAL_H
 
 #include <string>
+#include "resources.h"
 
 using namespace std;
 
@@ -10,10 +11,10 @@ class Animal{
     int m_chanceSick;
     bool m_sick;
     string m_name;
-    int m_age_month=0;
-    int m_price=0; // pas utilisé
+    Time *m_time = new Time(0,0);
+    int m_price=0;
 public:
-    Animal(bool male, string name, int age, int chanceSick):m_male(male), m_name(name), m_age_month(age), m_chanceSick(chanceSick){};
+    Animal(bool male, string name, int age, int chanceSick):m_male(male), m_name(name), m_chanceSick(chanceSick){m_time->setMonth(age);};
     virtual int estimateBuyPrice()=0;
     int getAge();
     string getName();
