@@ -18,7 +18,7 @@ void Zoo::buyAnimal(Animal *animal) {
             vector<int> specificHabitat = showSpecificHabitat(animal);
             cout << "You can stock your animal in habitat number: ";
             for (int i = 0; i < specificHabitat.size(); i++) {
-                cout << specificHabitat[i]<< ",";
+                cout << specificHabitat[i] << ",";
             }
             while (!good) {
                 cout << endl << "Choose the habitat for your animal" << endl;
@@ -33,7 +33,8 @@ void Zoo::buyAnimal(Animal *animal) {
             habitats[indexHabitat]->addAnimal(animal);
             m_money -= animal->estimateBuyPrice();
             cout << "You have: " << getMoney() << "money" << endl;
-            cout << "Your animal name's: " << animal->getName() << ", he's old is: " << animal->getAge() << "and has: " << animal->getChanceSick() << "% to get sick" << endl;
+            cout << "Your animal name's: " << animal->getName() << ", he's old is: " << animal->getAge() << "and has: "
+                 << animal->getChanceSick() << "% to get sick" << endl;
             return;
         } else {
             cout << "You don't have enough money" << endl;
@@ -48,18 +49,18 @@ void Zoo::sellAnimal(Animal *animal) {
 }
 
 void Zoo::buyFood(string foodname, int kilos) {
-    if (foodname=="meat"){
-        if (getMoney() >=  5*kilos){
+    if (foodname == "meat") {
+        if (getMoney() >= 5 * kilos) {
             cout << kilos << endl;
             foods[0]->addKilos(kilos);
-            m_money-=5*kilos;
+            m_money -= 5 * kilos;
             cout << "You have: " << getMoney() << "money" << endl;
             cout << "You have: " << foods[0]->getKilos() << " kg of meat now" << endl;
-        }else{
+        } else {
             cout << "You have don't have enough money" << endl;
         }
     }
-    if (foodname=="seed") {
+    if (foodname == "seed") {
         if (getMoney() >= 2.5 * kilos) {
             cout << kilos << endl;
             foods[1]->addKilos(kilos);
@@ -148,7 +149,7 @@ void Zoo::initFood() {
 }
 
 void Zoo::addMonth() {
-    for (int i = 1; i < 31; i++){
+    for (int i = 1; i < 31; i++) {
         m_time->setDay(1);
         //checkAnimal();
         //nourrire donner faim ou les tuers si elle est en gestation si elle est malade
@@ -163,5 +164,21 @@ void Zoo::addMonth() {
     }
     m_money+= visitor_number * 60;
      */
+}
+
+void Zoo::checkAnimals() {
+    for (int i = 0; i < habitats.size(); i++) {
+        if (habitats[i]->getAnimal() == "tiger") {
+            checkTiger(i);
+        } else if (habitats[i]->getAnimal() == "eagle"){
+            checkEagle(i);
+        }else{
+            checkChicken(i);
+        }
+    }
+}
+
+void Zoo::checkTiger(int indexHabitat) {
+
 }
 

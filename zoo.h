@@ -31,6 +31,10 @@ public:
     vector<int> showSpecificHabitat(Animal* animal);
     void initFood();
     void addMonth();
+    void checkAnimals();
+    void checkTiger(int indexHabitat);
+    void checkEagle(int indexHabitat);
+    void checkChicken(int indexHabitat);
 };
 
 #endif
