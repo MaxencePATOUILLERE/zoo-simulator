@@ -18,3 +18,7 @@ bool Animal::isMale() {
 int Animal::getChanceSick() {
     return m_chanceSick;
 }
+
+bool Animal::isPregnant() {
+    return m_pregnant;
+}

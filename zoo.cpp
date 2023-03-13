@@ -179,6 +179,12 @@ void Zoo::checkAnimals() {
 }
 
 void Zoo::checkTiger(int indexHabitat) {
-
+    if (foods[0]->getKilos()>=habitats[indexHabitat]->estimateTigerFood()){
+        habitats[indexHabitat]->giveFood();
+    }else if (habitats[indexHabitat]->isHungrySince()>2){
+        habitats[indexHabitat]->killAnimal();
+    }else{
+        habitats[indexHabitat]->setHungry();
+    }
 }
 

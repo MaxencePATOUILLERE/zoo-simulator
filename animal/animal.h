@@ -12,6 +12,7 @@ class Animal{
     int m_chanceSick;
     bool m_sick;
     bool m_hungry;
+    bool m_pregnant;
     string m_name;
     Time *m_time = new Time(0,0);
     int m_price=0;
@@ -22,6 +23,7 @@ public:
     string getName();
     bool isMale();
     int getChanceSick();
+    bool isPregnant();
 };
 
 #endif
