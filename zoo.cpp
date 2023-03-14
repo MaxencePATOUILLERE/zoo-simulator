@@ -151,7 +151,7 @@ void Zoo::initFood() {
 void Zoo::addMonth() {
     for (int i = 1; i < 31; i++) {
         m_time->setDay(1);
-        //checkAnimal();
+        checkAnimal();
         //nourrire donner faim ou les tuers si elle est en gestation si elle est malade
     }
     /*
@@ -175,16 +175,24 @@ void Zoo::checkAnimals() {
         }else{
             checkChicken(i);
         }
+        habitats[i]->addDay(1);
     }
 }
 
 void Zoo::checkTiger(int indexHabitat) {
     if (foods[0]->getKilos()>=habitats[indexHabitat]->estimateTigerFood()){
         habitats[indexHabitat]->giveFood();
-    }else if (habitats[indexHabitat]->isHungrySince()>2){
+    }else if(habitats[indexHabitat]->isHungrySince()>4){
         habitats[indexHabitat]->killAnimal();
-    }else{
-        habitats[indexHabitat]->setHungry();
+    }else if(habitats[indexHabitat]->isHungrySince()>2){
+        habitats[indexHabitat]->setHungry(); // si c'est une femelle, elle perds le bb
     }
+    habitats[indexHabitat]->isMature();// si mature petit ou vieux, change bool
+    habitats[indexHabitat]->checkCouple(); //check si faim//si surpopulation c'est next. check s'il nest pas malade // habitats[indexHabitat]->startGestation()change bool / habitats[indexHabitat]->gestationSince()>=600 //si elle est déjà enceinte ou si c'est + de 20mois
+    if(habitats[indexHabitat]->gestationSince()==90){
+        habitats[indexHabitat]->deliverTigrou();//change bool//mortalité infantile 33%//3 tigrous par portée
+    }
+    habitats[indexHabitat]->checkTigerAge();// si trop vieux il meurt
+    habitats[indexHabitat]->checkSick();// 0.1% de chance par j de tomber malade pendant 15j -> si + 15j -> plus malade : change bool
 }
 
