@@ -12,7 +12,7 @@ public:
     Food(int kilos):m_kilos(kilos){};
     void addKilos(int kilos);
     int getKilos();
-    //virtual void setKilos();
+    void removeKilos(int kilos);
 };
 
 #endif

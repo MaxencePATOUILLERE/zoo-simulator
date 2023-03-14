@@ -7,3 +7,8 @@ int Food::getKilos() {
 void Food::addKilos(int kilos) {
     m_kilos+=kilos;
 }
+
+
+void Food::removeKilos(int kilos) {
+    m_kilos-=kilos;
+}

@@ -26,6 +26,13 @@ public:
     int estimateTigerFood();
     int estimateEagleFood();
     int estimateChickenFood();
+    void addDay();
+    void giveFood();
+    void checkHungryTiger();
+
+    void isMatureTiger();
+
+    void checkCoupleTiger();
 };
 
 #endif

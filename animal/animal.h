@@ -12,9 +12,12 @@ class Animal{
     int m_chanceSick;
     bool m_sick;
     bool m_hungry;
+    int m_whenEat;
     bool m_pregnant;
     string m_name;
     Time *m_time = new Time(0,0);
+    bool m_waitForNextPregnant = false; // PASSE TRUE APRES L'ACCOUCHEMENT
+    int m_lastTimePregnant = 0;
     int m_price=0;
 public:
     Animal(bool male, string name, int age, int chanceSick):m_male(male), m_name(name), m_chanceSick(chanceSick){m_time->setMonth(age);};
@@ -24,6 +27,22 @@ public:
     bool isMale();
     int getChanceSick();
     bool isPregnant();
+    void addDays();
+    void eat();
+    int isHungrySince();
+    void killAnimal();
+    ~Animal();
+    void setHungry();
+    void setPregenant(bool pregenant);
+    void setMaturity(bool maturity);
+    bool isMature();
+    bool isHungry();
+    bool isSick();
+    int getlastTimePregnant();
+    void addDaysLTPrengnat();
+    bool getWaitNextPregnant();
+
+    void startGestation();
 };
 
 #endif
