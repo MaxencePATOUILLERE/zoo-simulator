@@ -1,4 +1,9 @@
 #include "habitat.h"
+#include "iostream"
+#include <stdlib.h>
+#include "tiger.h"
+#include "chicken.h"
+#include "eagle.h"
 
 int Habitat::getCapacity() {
     return m_capacity;
@@ -123,7 +128,24 @@ void Habitat::checkGestation() {
 }
 
 void Habitat::addTigrous() {
-
+    for (int i = 1; i <= 3;i++){
+        int dead = rand() % 3 + 1;
+        if (dead != 3){
+            bool male;
+            string name;
+            if (dead == 1){
+                cout << "Choose name for the male baby tiger :" << endl;
+                cin >> name;
+                male = true;
+            }else{
+                cout << "Choose name for the female baby tiger :" << endl;
+                cin >> name;
+                male = false;
+            }
+            Tiger *tigrou = new Tiger(male,name,0);
+            addAnimal(tigrou);
+        }
+    }
 }
 
 
