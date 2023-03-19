@@ -26,11 +26,17 @@ bool Animal::isPregnant() {
 
 void Animal::addDays() {
     m_time->setDay(1);
-    if (m_pregnant){
+    if (m_pregnant) {
         addDaysPregnantSince();
     }
-    if (m_waitForNextPregnant){
+    if (m_waitForNextPregnant) {
         addDaysLTPrengnat();
+    }
+    if (m_sick) {
+        m_sickSince++;
+    }
+    if (!m_sick) {
+        m_sickSince = 0;
     }
 }
 
@@ -56,11 +62,11 @@ void Animal::setPregenant(bool pregenant) {
 }
 
 Animal::~Animal() {
-    cout << "The animal " << m_name << " is dead this night"<<endl;
+    cout << "The animal " << m_name << " is dead this night" << endl;
 }
 
 void Animal::setMaturity(bool maturity) {
-    m_sexualMat=maturity;
+    m_sexualMat = maturity;
 }
 
 bool Animal::isMature() {
@@ -104,4 +110,12 @@ void Animal::birth() {
     m_pregnantSince = 0;
     m_waitForNextPregnant = true;
     m_lastTimePregnant = 0;
+}
+
+void Animal::setSick(bool sick) {
+    m_sick = sick;
+}
+
+int Animal::getSickSince() {
+    return m_sickSince;
 }

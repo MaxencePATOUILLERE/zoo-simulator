@@ -92,6 +92,7 @@ void Habitat::checkCoupleTiger() {
 void Habitat::checkHungryTiger() {
     for (int i = 0; i < animals.size(); i++){
         if(animals[i]->isHungrySince()>4){
+            cout << "dead hungyyy" << endl;
             animals[i]->killAnimal();
         }else if(animals[i]->isHungrySince()>2){
             if (!animals[i]->isMale()){
@@ -156,13 +157,20 @@ void Habitat::checkTigerAge() {
     }
 }
 
-void Habitat::checkSick() {
+void Habitat::checkSickTiger() {
+    double chanceSick = animals[0]->getChanceSick();
+    chanceSick = (chanceSick/100) / 30;
     for (int i = 0; i < animals.size(); i++){
-        double chanceSick = animals[i]->getChanceSick();
-        chanceSick = (chanceSick/100) / 30;
         double probabilite = static_cast<double>(rand()) / RAND_MAX;
         if (probabilite < chanceSick){
-            animals[i].
+            if (animals[i]->isSick()){
+                cout << "dead sikeuh" << endl;
+                animals[i]->killAnimal();
+            }
+            animals[i]->setSick(true);
+        }
+        if (animals[i]->getSickSince()==15){
+            animals[i]->setSick(false);
         }
     }
 }

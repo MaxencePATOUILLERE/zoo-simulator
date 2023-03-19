@@ -15,6 +15,7 @@ class Animal{
     int m_whenEat;
     bool m_pregnant;
     int m_pregnantSince;
+    int m_sickSince;
     string m_name;
     Time *m_time = new Time(0,0);
     bool m_waitForNextPregnant = false; // PASSE TRUE APRES L'ACCOUCHEMENT
@@ -47,6 +48,10 @@ public:
     int pregnantSince();
 
     void birth();
+
+    void setSick(bool b);
+
+    int getSickSince();
 };
 
 #endif

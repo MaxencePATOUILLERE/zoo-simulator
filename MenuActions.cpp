@@ -71,7 +71,7 @@ void MenuActions::createZoo() {
     string zoo_name;
     cout << "Choose a name for the zoo: ";
     cin >> zoo_name;
-    Zoo *zoo = new Zoo(zoo_name, 80000);
+    Zoo *zoo = new Zoo(zoo_name, 1000000000);
     m_zoo = zoo;
     m_zoo->initFood();
 }

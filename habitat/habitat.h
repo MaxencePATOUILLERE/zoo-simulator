@@ -41,7 +41,7 @@ public:
 
     void checkTigerAge();
 
-    void checkSick();
+    void checkSickTiger();
 };
 
 #endif

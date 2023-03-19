@@ -170,11 +170,11 @@ void Zoo::checkAnimals() {
         habitats[i]->addDay();
         if (habitats[i]->getAnimal() == "tiger") {
             checkTiger(i);
-        } else if (habitats[i]->getAnimal() == "eagle"){
+        }/* else if (habitats[i]->getAnimal() == "eagle"){
             checkEagle(i);
         }else{
             checkChicken(i);
-        }
+        }*/
     }
 }
 
@@ -189,6 +189,6 @@ void Zoo::checkTiger(int indexHabitat) {
     habitats[indexHabitat]->checkCoupleTiger();
     habitats[indexHabitat]->checkGestation();
     habitats[indexHabitat]->checkTigerAge();
-    habitats[indexHabitat]->checkSick();// 0.1% de chance par j de tomber malade pendant 15j -> si + 15j -> plus malade : change bool
+    habitats[indexHabitat]->checkSickTiger();
 }
 
