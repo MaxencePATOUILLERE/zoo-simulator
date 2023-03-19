@@ -164,7 +164,6 @@ void Habitat::checkTigerAge() {
 void Habitat::checkSickTiger() {
     double proba_annuelle = 0.3; // probabilité annuelle de tomber malade
     double proba_quotidienne = 1 - pow(1 - proba_annuelle, 1.0/365.0); // probabilité quotidienne de tomber malade
-
     for (int i = 0; i < animals.size(); i++) {
         double probabilite = static_cast<double>(rand()) / RAND_MAX;
         if (probabilite < proba_quotidienne) {
