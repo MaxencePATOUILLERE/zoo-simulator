@@ -33,6 +33,11 @@ public:
     void isMatureTiger();
 
     void checkCoupleTiger();
+
+
+    void checkGestation();
+
+    void addTigrous();
 };
 
 #endif

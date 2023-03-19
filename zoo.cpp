@@ -187,9 +187,7 @@ void Zoo::checkTiger(int indexHabitat) {
     }
     habitats[indexHabitat]->isMatureTiger();
     habitats[indexHabitat]->checkCoupleTiger();
-    if(habitats[indexHabitat]->gestationSince()==90){
-        habitats[indexHabitat]->deliverTigrou();//change bool//mortalité infantile 33%//3 tigrous par portée
-    }
+    habitats[indexHabitat]->checkGestation();
     habitats[indexHabitat]->checkTigerAge();// si trop vieux il meurt
     habitats[indexHabitat]->checkSick();// 0.1% de chance par j de tomber malade pendant 15j -> si + 15j -> plus malade : change bool
 }

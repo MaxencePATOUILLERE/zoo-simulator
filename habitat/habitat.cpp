@@ -57,9 +57,6 @@ int Habitat::estimateChickenFood() {
 void Habitat::addDay() {
     for (int i = 0; i < animals.size(); i++){
         animals[i]->addDays();
-        if (animals[i]->getWaitNextPregnant()){
-            animals[i]->addDaysLTPrengnat();
-        }
     }
 }
 
@@ -115,6 +112,20 @@ void Habitat::isMatureTiger() {
         }
     }
 }
+
+void Habitat::checkGestation() {
+    for (int i = 0; i < animals.size(); i++) {
+        if (animals[i]->isPregnant() &&   animals[i]->pregnantSince() == 90) {
+            animals[i]->birth();
+            addTigrous(); //change bool//mortalité infantile 33%//3 tigrous par portée
+        }
+    }
+}
+
+void Habitat::addTigrous() {
+
+}
+
 
 
 

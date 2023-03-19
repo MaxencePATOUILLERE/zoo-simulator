@@ -26,6 +26,12 @@ bool Animal::isPregnant() {
 
 void Animal::addDays() {
     m_time->setDay(1);
+    if (m_pregnant){
+        addDaysPregnantSince();
+    }
+    if (m_waitForNextPregnant){
+        addDaysLTPrengnat();
+    }
 }
 
 void Animal::eat() {
@@ -82,5 +88,20 @@ void Animal::addDaysLTPrengnat() {
 }
 
 void Animal::startGestation() {
+    m_pregnant = true;
+}
 
+void Animal::addDaysPregnantSince() {
+    m_pregnantSince++;
+}
+
+int Animal::pregnantSince() {
+    return m_pregnantSince;
+}
+
+void Animal::birth() {
+    m_pregnant = false;
+    m_pregnantSince = 0;
+    m_waitForNextPregnant = true;
+    m_lastTimePregnant = 0;
 }
