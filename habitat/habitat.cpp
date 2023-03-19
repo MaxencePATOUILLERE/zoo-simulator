@@ -4,6 +4,7 @@
 #include "tiger.h"
 #include "chicken.h"
 #include "eagle.h"
+#include "cmath"
 
 int Habitat::getCapacity() {
     return m_capacity;
@@ -96,8 +97,10 @@ void Habitat::checkHungryTiger() {
             animals[i]->killAnimal();
         }else if(animals[i]->isHungrySince()>2){
             if (!animals[i]->isMale()){
+                animals[i]->setHungry();
                 animals[i]->setPregenant(false);
             }else{
+                animals[i]->setDontHaveEat();
                 animals[i]->setHungry();
             }
         }
@@ -158,18 +161,20 @@ void Habitat::checkTigerAge() {
 }
 
 void Habitat::checkSickTiger() {
-    double chanceSick = animals[0]->getChanceSick();
-    chanceSick = (chanceSick/100) / 30;
-    for (int i = 0; i < animals.size(); i++){
+    double proba_annuelle = 0.3; // probabilité annuelle de tomber malade
+    double proba_quotidienne = 1 - pow(1 - proba_annuelle, 1.0/365.0); // probabilité quotidienne de tomber malade
+
+    for (int i = 0; i < animals.size(); i++) {
         double probabilite = static_cast<double>(rand()) / RAND_MAX;
-        if (probabilite < chanceSick){
-            if (animals[i]->isSick()){
+        if (probabilite < proba_quotidienne) {
+            cout << "tomber malade"<<endl;
+            if (animals[i]->isSick()) {
                 cout << "dead sikeuh" << endl;
                 animals[i]->killAnimal();
             }
             animals[i]->setSick(true);
         }
-        if (animals[i]->getSickSince()==15){
+        if (animals[i]->getSickSince() == 15) {
             animals[i]->setSick(false);
         }
     }

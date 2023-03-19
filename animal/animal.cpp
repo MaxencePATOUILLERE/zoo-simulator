@@ -38,6 +38,7 @@ void Animal::addDays() {
     if (!m_sick) {
         m_sickSince = 0;
     }
+    m_whenEat ++;
 }
 
 void Animal::eat() {
