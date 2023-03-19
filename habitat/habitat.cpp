@@ -95,6 +95,7 @@ void Habitat::checkHungryTiger() {
         if(animals[i]->isHungrySince()>4){
             cout << "dead hungyyy" << endl;
             animals[i]->killAnimal();
+            animals.erase(animals.begin()+i);
         }else if(animals[i]->isHungrySince()>2){
             if (!animals[i]->isMale()){
                 animals[i]->setHungry();
@@ -155,6 +156,7 @@ void Habitat::checkTigerAge() {
     for (int i = 0; i < animals.size(); i++){
         if (animals[i]->getAge()== 168){
             animals[i]->killAnimal();
+            animals.erase(animals.begin()+i);
         }
     }
 }
@@ -170,6 +172,7 @@ void Habitat::checkSickTiger() {
             if (animals[i]->isSick()) {
                 cout << "dead sikeuh" << endl;
                 animals[i]->killAnimal();
+                animals.erase(animals.begin()+i);
             }
             animals[i]->setSick(true);
         }
