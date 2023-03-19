@@ -77,15 +77,18 @@ void Habitat::checkCoupleTiger() {
     int valideFemaleIndex;
     bool gotValideMale = false;
     for (int i = 0; i < animals.size();i++){
-        if (!animals[i]->isMale() && animals[i]->isMature() && !animals[i]->isHungry() && !animals[i]->isSick() && animals[i]->getlastTimePregnant()>=600 && getCapacity()>= 5){
+        if (!animals[i]->isMale() && animals[i]->isMature() && !animals[i]->isHungry() && !animals[i]->isSick() && !animals[i]->isPregnant() && !animals[i]->getWaitNextPregnant() && getCapacity()>= 5){
+            cout << "got a valide female"<<endl;
             gotValideFemale = true;
             valideFemaleIndex = i;
         }
         if (animals[i]->isMale() && animals[i]->isMature() && !animals[i]->isHungry() && !animals[i]->isSick() && getCapacity()>= 5){
+            cout << "got a valide male"<<endl;
             gotValideMale = true;
         }
     }
     if (gotValideFemale && gotValideMale){
+        cout << "LETSFUCK"<<endl;
         animals[valideFemaleIndex]->startGestation();
     }
 }
@@ -109,14 +112,18 @@ void Habitat::checkHungryTiger() {
 
 void Habitat::isMatureTiger() {
     for (int i = 0; i < animals.size(); i++){
-        if (animals[i]->isMale() && animals[i]->getAge()==72){
-            animals[i]->setMaturity(true);
-        } else if (animals[i]->isMale() && animals[i]->getAge()==168){
+        if (!animals[i]->isMature()){
+            if (animals[i]->isMale() && animals[i]->getAge()>=48){ // remettre 72
+                animals[i]->setMaturity(true);
+            }
+            if (!animals[i]->isMale() && animals[i]->getAge() >= 48){
+                animals[i]->setMaturity(true);
+            }
+        }
+         if (animals[i]->isMale() && animals[i]->getAge()==168){
             animals[i]->setMaturity(false);
         }
-        if (!animals[i]->isMale() && animals[i]->getAge() == 48){
-            animals[i]->setMaturity(true);
-        } else if (!animals[i]->isMale() && animals[i]->getAge()==168){
+         if (!animals[i]->isMale() && animals[i]->getAge()==168){
             animals[i]->setMaturity(false);
         }
     }

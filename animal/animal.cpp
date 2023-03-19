@@ -60,6 +60,7 @@ void Animal::setHungry() {
 
 void Animal::setPregenant(bool pregenant) {
     m_pregnant = pregenant;
+    cout << "ENCEINTE" << endl;
 }
 
 Animal::~Animal() {
