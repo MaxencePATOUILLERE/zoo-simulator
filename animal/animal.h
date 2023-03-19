@@ -46,11 +46,8 @@ public:
     bool getWaitNextPregnant();
     void startGestation();
     int pregnantSince();
-
     void birth();
-
     void setSick(bool b);
-
     int getSickSince();
 };
 

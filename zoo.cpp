@@ -185,9 +185,9 @@ void Zoo::checkTiger(int indexHabitat) {
     }else {
         habitats[indexHabitat]->checkHungryTiger();
     }
-    habitats[indexHabitat]->isMatureTiger();
     habitats[indexHabitat]->checkCoupleTiger();
     habitats[indexHabitat]->checkGestation();
+    habitats[indexHabitat]->isMatureTiger();
     habitats[indexHabitat]->checkTigerAge();
     habitats[indexHabitat]->checkSickTiger();
 }

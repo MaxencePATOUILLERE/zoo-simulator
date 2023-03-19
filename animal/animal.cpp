@@ -60,7 +60,6 @@ void Animal::setHungry() {
 
 void Animal::setPregenant(bool pregenant) {
     m_pregnant = pregenant;
-    cout << "ENCEINTE" << endl;
 }
 
 Animal::~Animal() {
@@ -97,6 +96,8 @@ void Animal::addDaysLTPrengnat() {
 
 void Animal::startGestation() {
     m_pregnant = true;
+    m_pregnantSince = 0;
+    cout << "ENCEINTE" << endl;
 }
 
 void Animal::addDaysPregnantSince() {

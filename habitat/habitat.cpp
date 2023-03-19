@@ -77,18 +77,19 @@ void Habitat::checkCoupleTiger() {
     int valideFemaleIndex;
     bool gotValideMale = false;
     for (int i = 0; i < animals.size();i++){
-        if (!animals[i]->isMale() && animals[i]->isMature() && !animals[i]->isHungry() && !animals[i]->isSick() && !animals[i]->isPregnant() && !animals[i]->getWaitNextPregnant() && getCapacity()>= 5){
-            cout << "got a valide female"<<endl;
+        if (!animals[i]->isMale() && animals[i]->isMature() && !animals[i]->isHungry() && !animals[i]->isSick() && !animals[i]->isPregnant() && !animals[i]->getWaitNextPregnant()){
+            gotValideFemale = true;
+            valideFemaleIndex = i;
+        } else if ( animals[i]->getlastTimePregnant() >= 600){
             gotValideFemale = true;
             valideFemaleIndex = i;
         }
-        if (animals[i]->isMale() && animals[i]->isMature() && !animals[i]->isHungry() && !animals[i]->isSick() && getCapacity()>= 5){
-            cout << "got a valide male"<<endl;
+        if (animals[i]->isMale() && animals[i]->isMature() && !animals[i]->isHungry() && !animals[i]->isSick()){
             gotValideMale = true;
         }
     }
     if (gotValideFemale && gotValideMale){
-        cout << "LETSFUCK"<<endl;
+        cout << "startgestation" << animals[valideFemaleIndex]->getName()<<endl;
         animals[valideFemaleIndex]->startGestation();
     }
 }
@@ -131,15 +132,16 @@ void Habitat::isMatureTiger() {
 
 void Habitat::checkGestation() {
     for (int i = 0; i < animals.size(); i++) {
-        if (animals[i]->isPregnant() &&   animals[i]->pregnantSince() == 90) {
+        if (animals[i]->isPregnant() && animals[i]->pregnantSince() == 90) {
             animals[i]->birth();
-            addTigrous(); //change bool//mortalité infantile 33%//3 tigrous par portée
+            cout << "?"<<endl;
+            addTigrous();
         }
     }
 }
 
 void Habitat::addTigrous() {
-    for (int i = 1; i <= 3;i++){
+    for (int i = 0; i < 3;i++){
         int dead = rand() % 3 + 1;
         if (dead != 3){
             bool male;
@@ -154,6 +156,7 @@ void Habitat::addTigrous() {
                 male = false;
             }
             Tiger *tigrou = new Tiger(male,name,0);
+            tigrou->setMaturity(false);
             addAnimal(tigrou);
         }
     }
