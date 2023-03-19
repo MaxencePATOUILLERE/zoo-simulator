@@ -100,7 +100,6 @@ void Habitat::checkHungryTiger() {
                 animals[i]->setHungry();
                 animals[i]->setPregenant(false);
             }else{
-                animals[i]->setDontHaveEat();
                 animals[i]->setHungry();
             }
         }
