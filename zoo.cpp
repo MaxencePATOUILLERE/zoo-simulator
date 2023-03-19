@@ -188,7 +188,7 @@ void Zoo::checkTiger(int indexHabitat) {
     habitats[indexHabitat]->isMatureTiger();
     habitats[indexHabitat]->checkCoupleTiger();
     habitats[indexHabitat]->checkGestation();
-    habitats[indexHabitat]->checkTigerAge();// si trop vieux il meurt
+    habitats[indexHabitat]->checkTigerAge();
     habitats[indexHabitat]->checkSick();// 0.1% de chance par j de tomber malade pendant 15j -> si + 15j -> plus malade : change bool
 }
 

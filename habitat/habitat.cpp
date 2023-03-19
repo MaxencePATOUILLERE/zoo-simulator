@@ -148,6 +148,25 @@ void Habitat::addTigrous() {
     }
 }
 
+void Habitat::checkTigerAge() {
+    for (int i = 0; i < animals.size(); i++){
+        if (animals[i]->getAge()== 168){
+            animals[i]->killAnimal();
+        }
+    }
+}
+
+void Habitat::checkSick() {
+    for (int i = 0; i < animals.size(); i++){
+        double chanceSick = animals[i]->getChanceSick();
+        chanceSick = (chanceSick/100) / 30;
+        double probabilite = static_cast<double>(rand()) / RAND_MAX;
+        if (probabilite < chanceSick){
+            animals[i].
+        }
+    }
+}
+
 
 
 

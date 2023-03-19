@@ -38,6 +38,10 @@ public:
     void checkGestation();
 
     void addTigrous();
+
+    void checkTigerAge();
+
+    void checkSick();
 };
 
 #endif
