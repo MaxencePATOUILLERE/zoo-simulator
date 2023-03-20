@@ -26,7 +26,7 @@ public:
     int estimateFood();
     void addDay();
     void giveFood();
-    void checkHungryTiger();
+    void checkHungry();
 
     void isMatureTiger();
 

@@ -170,9 +170,9 @@ void Zoo::checkAnimals() {
         habitats[i]->addDay();
         if (foods[0]->getKilos()>=habitats[i]->estimateFood()){
             habitats[i]->giveFood();
-            foods[0]->removeKilos(habitats[i]->estimateTigerFood());
+            foods[0]->removeKilos(habitats[i]->estimateFood());
         }else {
-            habitats[i]->checkHungryTiger();
+            habitats[i]->checkHungry();
         }
         habitats[i]->checkCouple(); // tout animal c'est fait
         habitats[i]->checkGestation();

@@ -86,18 +86,46 @@ void Habitat::checkCouple() {
     }
 }
 
-void Habitat::checkHungryTiger() {
+void Habitat::checkHungry() {
     for (int i = 0; i < animals.size(); i++) {
-        if (animals[i]->isHungrySince() > 4) {
-            cout << "dead hungyyy" << endl;
-            animals[i]->killAnimal();
-            animals.erase(animals.begin() + i);
-        } else if (animals[i]->isHungrySince() > 2) {
-            if (!animals[i]->isMale()) {
-                animals[i]->setHungry();
-                animals[i]->setPregenant(false);
-            } else {
-                animals[i]->setHungry();
+        if (dynamic_cast<Tiger*>(animals[i])!= nullptr){
+            if (animals[i]->isHungrySince() > 4) {
+                cout << animals[i]->getName()<<" is die of hunger" << endl;
+                animals[i]->killAnimal();
+                animals.erase(animals.begin() + i);
+            } else if (animals[i]->isHungrySince() > 2) {
+                if (!animals[i]->isMale()) {
+                    animals[i]->setHungry();
+                    animals[i]->setPregenant(false);
+                } else {
+                    animals[i]->setHungry();
+                }
+            }
+        } else if (dynamic_cast<Eagle*>(animals[i])!= nullptr){
+            if (animals[i]->isHungrySince() > 20) {
+                cout << animals[i]->getName()<<" is die of hunger" << endl;
+                animals[i]->killAnimal();
+                animals.erase(animals.begin() + i);
+            } else if (animals[i]->isHungrySince() > 10) {
+                if (!animals[i]->isMale()) {
+                    animals[i]->setHungry();
+                    animals[i]->setPregenant(false);
+                } else {
+                    animals[i]->setHungry();
+                }
+            }
+        } else {
+            if ((animals[i]->isHungrySince() > 2 && !animals[i]->isMale()) || ((animals[i]->isHungrySince() > 4 && animals[i]->isMale()))){
+                cout << animals[i]->getName()<<" is die of hunger" << endl;
+                animals[i]->killAnimal();
+                animals.erase(animals.begin() + i);
+            } else if ((animals[i]->isHungrySince() > 1 && !animals[i]->isMale()) || ((animals[i]->isHungrySince() > 2 && animals[i]->isMale()))) {
+                if (!animals[i]->isMale()) {
+                    animals[i]->setHungry();
+                    animals[i]->setPregenant(false);
+                } else {
+                    animals[i]->setHungry();
+                }
             }
         }
     }
