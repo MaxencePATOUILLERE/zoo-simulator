@@ -27,21 +27,13 @@ public:
     void addDay();
     void giveFood();
     void checkHungry();
-
-    void isMatureTiger();
-
+    void isMature();
     void checkCouple();
-
     void checkGestation();
-
     void addTigrous();
-
     void checkTigerAge();
-
     void checkSickTiger();
-
     void addEaglouglou();
-
     void addKfc();
 };
 

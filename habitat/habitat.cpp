@@ -131,21 +131,38 @@ void Habitat::checkHungry() {
     }
 }
 
-void Habitat::isMatureTiger() {
+void Habitat::isMature() {
     for (int i = 0; i < animals.size(); i++) {
-        if (!animals[i]->isMature()) {
-            if (animals[i]->isMale() && animals[i]->getAge() >= 48) { // remettre 72
-                animals[i]->setMaturity(true);
+        if (dynamic_cast<Tiger*>(animals[i])!= nullptr || dynamic_cast<Eagle*>(animals[i])!= nullptr ){
+            if (!animals[i]->isMature()) {
+                if (animals[i]->isMale() && animals[i]->getAge() >= 72) { // remettre 72
+                    animals[i]->setMaturity(true);
+                }
+                if (!animals[i]->isMale() && animals[i]->getAge() >= 48) {
+                    animals[i]->setMaturity(true);
+                }
             }
-            if (!animals[i]->isMale() && animals[i]->getAge() >= 48) {
-                animals[i]->setMaturity(true);
+            if (animals[i]->isMale() && animals[i]->getAge() == 168) {
+                animals[i]->setMaturity(false);
             }
-        }
-        if (animals[i]->isMale() && animals[i]->getAge() == 168) {
-            animals[i]->setMaturity(false);
-        }
-        if (!animals[i]->isMale() && animals[i]->getAge() == 168) {
-            animals[i]->setMaturity(false);
+            if (!animals[i]->isMale() && animals[i]->getAge() == 168) {
+                animals[i]->setMaturity(false);
+            }
+        } else {
+            if (!animals[i]->isMature()) {
+                if (animals[i]->isMale() && animals[i]->getAge() >= 6) {
+                    animals[i]->setMaturity(true);
+                }
+                if (!animals[i]->isMale() && animals[i]->getAge() >= 6) {
+                    animals[i]->setMaturity(true);
+                }
+            }
+            if (animals[i]->isMale() && animals[i]->getAge() == 96) {
+                animals[i]->setMaturity(false);
+            }
+            if (!animals[i]->isMale() && animals[i]->getAge() == 96) {
+                animals[i]->setMaturity(false);
+            }
         }
     }
 }
