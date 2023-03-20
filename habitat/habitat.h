@@ -32,7 +32,7 @@ public:
 
     void isMatureTiger();
 
-    void checkCoupleTiger();
+    void checkCouple();
 
     void checkGestation();
 

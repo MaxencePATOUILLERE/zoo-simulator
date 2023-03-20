@@ -61,50 +61,50 @@ int Habitat::estimateChickenFood() {
 }
 
 void Habitat::addDay() {
-    for (int i = 0; i < animals.size(); i++){
+    for (int i = 0; i < animals.size(); i++) {
         animals[i]->addDays();
     }
 }
 
 void Habitat::giveFood() {
-    for (int i = 0; i < animals.size(); i++){
+    for (int i = 0; i < animals.size(); i++) {
         animals[i]->eat();
     }
 }
 
-void Habitat::checkCoupleTiger() {
+void Habitat::checkCouple() {
     bool gotValideFemale = false;
     int valideFemaleIndex;
     bool gotValideMale = false;
-    for (int i = 0; i < animals.size();i++){
-        if (!animals[i]->isMale() && animals[i]->isMature() && !animals[i]->isHungry() && !animals[i]->isSick() && !animals[i]->isPregnant() && !animals[i]->getWaitNextPregnant()){
+    for (int i = 0; i < animals.size(); i++) {
+        if (!animals[i]->isMale() && animals[i]->isMature() && !animals[i]->isHungry() && !animals[i]->isSick() && !animals[i]->isPregnant() && !animals[i]->getWaitNextPregnant()) {
             gotValideFemale = true;
             valideFemaleIndex = i;
-        } else if ( animals[i]->getlastTimePregnant() >= 600){
+        } else if (animals[i]->getlastTimePregnant() == 90) {
             gotValideFemale = true;
             valideFemaleIndex = i;
         }
-        if (animals[i]->isMale() && animals[i]->isMature() && !animals[i]->isHungry() && !animals[i]->isSick()){
+        if (animals[i]->isMale() && animals[i]->isMature() && !animals[i]->isHungry() && !animals[i]->isSick()) {
             gotValideMale = true;
         }
     }
-    if (gotValideFemale && gotValideMale){
-        cout << "startgestation" << animals[valideFemaleIndex]->getName()<<endl;
+    if (gotValideFemale && gotValideMale) {
+        cout << "startgestation" << animals[valideFemaleIndex]->getName() << endl;
         animals[valideFemaleIndex]->startGestation();
     }
 }
 
 void Habitat::checkHungryTiger() {
-    for (int i = 0; i < animals.size(); i++){
-        if(animals[i]->isHungrySince()>4){
+    for (int i = 0; i < animals.size(); i++) {
+        if (animals[i]->isHungrySince() > 4) {
             cout << "dead hungyyy" << endl;
             animals[i]->killAnimal();
-            animals.erase(animals.begin()+i);
-        }else if(animals[i]->isHungrySince()>2){
-            if (!animals[i]->isMale()){
+            animals.erase(animals.begin() + i);
+        } else if (animals[i]->isHungrySince() > 2) {
+            if (!animals[i]->isMale()) {
                 animals[i]->setHungry();
                 animals[i]->setPregenant(false);
-            }else{
+            } else {
                 animals[i]->setHungry();
             }
         }
@@ -112,19 +112,19 @@ void Habitat::checkHungryTiger() {
 }
 
 void Habitat::isMatureTiger() {
-    for (int i = 0; i < animals.size(); i++){
-        if (!animals[i]->isMature()){
-            if (animals[i]->isMale() && animals[i]->getAge()>=48){ // remettre 72
+    for (int i = 0; i < animals.size(); i++) {
+        if (!animals[i]->isMature()) {
+            if (animals[i]->isMale() && animals[i]->getAge() >= 48) { // remettre 72
                 animals[i]->setMaturity(true);
             }
-            if (!animals[i]->isMale() && animals[i]->getAge() >= 48){
+            if (!animals[i]->isMale() && animals[i]->getAge() >= 48) {
                 animals[i]->setMaturity(true);
             }
         }
-         if (animals[i]->isMale() && animals[i]->getAge()==168){
+        if (animals[i]->isMale() && animals[i]->getAge() == 168) {
             animals[i]->setMaturity(false);
         }
-         if (!animals[i]->isMale() && animals[i]->getAge()==168){
+        if (!animals[i]->isMale() && animals[i]->getAge() == 168) {
             animals[i]->setMaturity(false);
         }
     }
@@ -134,28 +134,28 @@ void Habitat::checkGestation() {
     for (int i = 0; i < animals.size(); i++) {
         if (animals[i]->isPregnant() && animals[i]->pregnantSince() == 90) {
             animals[i]->birth();
-            cout << "?"<<endl;
+            cout << "?" << endl;
             addTigrous();
         }
     }
 }
 
 void Habitat::addTigrous() {
-    for (int i = 0; i < 3;i++){
+    for (int i = 0; i < 3; i++) {
         int dead = rand() % 3 + 1;
-        if (dead != 3){
+        if (dead != 3) {
             bool male;
             string name;
-            if (dead == 1){
+            if (dead == 1) {
                 cout << "Choose name for the male baby tiger :" << endl;
                 cin >> name;
                 male = true;
-            }else{
+            } else {
                 cout << "Choose name for the female baby tiger :" << endl;
                 cin >> name;
                 male = false;
             }
-            Tiger *tigrou = new Tiger(male,name,0);
+            Tiger *tigrou = new Tiger(male, name, 0);
             tigrou->setMaturity(false);
             addAnimal(tigrou);
         }
@@ -163,25 +163,25 @@ void Habitat::addTigrous() {
 }
 
 void Habitat::checkTigerAge() {
-    for (int i = 0; i < animals.size(); i++){
-        if (animals[i]->getAge()== 168){
+    for (int i = 0; i < animals.size(); i++) {
+        if (animals[i]->getAge() == 168) {
             animals[i]->killAnimal();
-            animals.erase(animals.begin()+i);
+            animals.erase(animals.begin() + i);
         }
     }
 }
 
 void Habitat::checkSickTiger() {
     double proba_annuelle = 0.3; // probabilité annuelle de tomber malade
-    double proba_quotidienne = 1 - pow(1 - proba_annuelle, 1.0/365.0); // probabilité quotidienne de tomber malade
+    double proba_quotidienne = 1 - pow(1 - proba_annuelle, 1.0 / 365.0); // probabilité quotidienne de tomber malade
     for (int i = 0; i < animals.size(); i++) {
         double probabilite = static_cast<double>(rand()) / RAND_MAX;
         if (probabilite < proba_quotidienne) {
-            cout << "tomber malade"<<endl;
+            cout << "tomber malade" << endl;
             if (animals[i]->isSick()) {
                 cout << "dead sikeuh" << endl;
                 animals[i]->killAnimal();
-                animals.erase(animals.begin()+i);
+                animals.erase(animals.begin() + i);
             }
             animals[i]->setSick(true);
         }
