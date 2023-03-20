@@ -42,7 +42,7 @@ public:
 
     void addEaglouglou();
 
-    void addaddKfc();
+    void addKfc();
 };
 
 #endif

@@ -168,40 +168,25 @@ void Zoo::addMonth() {
 void Zoo::checkAnimals() {
     for (int i = 0; i < habitats.size(); i++) {
         habitats[i]->addDay();
-        if (habitats[i]->getAnimal()=="tiger"){
-            if (foods[0]->getKilos()>=habitats[i]->estimateFood()){
+        if (habitats[i]->getAnimal() == "tiger") {
+            if (foods[0]->getKilos() >= habitats[i]->estimateFood()) {
                 habitats[i]->giveFood();
                 foods[0]->removeKilos(habitats[i]->estimateFood());
-            }else {
+            } else {
                 habitats[i]->checkHungry();
             }
         } else {
-            if (foods[1]->getKilos()>=habitats[i]->estimateFood()){
+            if (foods[1]->getKilos() >= habitats[i]->estimateFood()) {
                 habitats[i]->giveFood();
                 foods[1]->removeKilos(habitats[i]->estimateFood());
-            }else {
+            } else {
                 habitats[i]->checkHungry();
+            }
+            habitats[i]->checkCouple();
+            habitats[i]->checkGestation();
+            habitats[i]->isMature();
+            habitats[i]->checkTigerAge();
+            habitats[i]->checkSickTiger();
         }
-        habitats[i]->checkCouple();
-
-        habitats[i]->checkGestation();
-        habitats[i]->isMatureTiger();
-        habitats[i]->checkTigerAge();
-        habitats[i]->checkSickTiger();
     }
 }
-/*
-void Zoo::checkTiger(int indexHabitat) {
-    if (foods[0]->getKilos()>=habitats[indexHabitat]->estimateTigerFood()){
-        habitats[indexHabitat]->giveFood();
-        foods[0]->removeKilos(habitats[indexHabitat]->estimateTigerFood());
-    }else {
-        habitats[indexHabitat]->checkHungryTiger();
-    }
-    habitats[indexHabitat]->checkCouple(); // tout animal c'est fait
-    habitats[indexHabitat]->checkGestation();
-    habitats[indexHabitat]->isMatureTiger();
-    habitats[indexHabitat]->checkTigerAge();
-    habitats[indexHabitat]->checkSickTiger();
-}*/
-

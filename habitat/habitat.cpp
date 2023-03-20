@@ -72,7 +72,7 @@ void Habitat::checkCouple() {
         if (!animals[i]->isMale() && animals[i]->isMature() && !animals[i]->isHungry() && !animals[i]->isSick() && !animals[i]->isPregnant() && !animals[i]->getWaitNextPregnant()) {
             gotValideFemale = true;
             valideFemaleIndex = i;
-        } else if ((dynamic_cast<Tiger*> (animals[i]) != nullptr && animals[i]->getlastTimePregnant() == 90) || (dynamic_cast<Eagle*> (animals[i])!= nullptr && animals[i]->getlastTimePregnant()==45)  || (dynamic_cast<Chicken*> (animals[i])!= nullptr && animals[i]->getlastTimePregnant()==42)) {
+        } else if ((dynamic_cast<Tiger*> (animals[i]) != nullptr && animals[i]->getlastTimePregnant() == 600) || (dynamic_cast<Eagle*> (animals[i])!= nullptr && animals[i]->getlastTimePregnant()==45)  || (dynamic_cast<Chicken*> (animals[i])!= nullptr && animals[i]->getlastTimePregnant()==42)) {
             gotValideFemale = true;
             valideFemaleIndex = i;
         }
@@ -168,7 +168,7 @@ void Habitat::checkGestation() {
             if (animals[i]->isPregnant() && animals[i]->pregnantSince() == 42) {
                 animals[i]->birth();
                 cout << animals[i]->getName() << "start birth"<<endl;
-                addFriedChicken();
+                addKfc();
             }
         }
     }
@@ -196,44 +196,44 @@ void Habitat::addTigrous() {
     }
 }
 void Habitat::addEaglouglou() {
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 1; i++) {
         int dead = rand() % 3 + 1;
         if (dead != 3) {
             bool male;
             string name;
             if (dead == 1) {
-                cout << "Choose name for the male baby tiger :" << endl;
+                cout << "Choose name for the male baby eagle :" << endl;
                 cin >> name;
                 male = true;
             } else {
-                cout << "Choose name for the female baby tiger :" << endl;
+                cout << "Choose name for the female baby eagle :" << endl;
                 cin >> name;
                 male = false;
             }
-            Tiger *tigrou = new Tiger(male, name, 0);
-            tigrou->setMaturity(false);
-            addAnimal(tigrou);
+            Eagle *eaglouglou = new Eagle(male, name, 0);
+            eaglouglou->setMaturity(false);
+            addAnimal(eaglouglou);
         }
     }
 }
 void Habitat::addKfc() {
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 4; i++) {
         int dead = rand() % 3 + 1;
         if (dead != 3) {
             bool male;
             string name;
             if (dead == 1) {
-                cout << "Choose name for the male baby tiger :" << endl;
+                cout << "Choose name for the male baby rooster :" << endl;
                 cin >> name;
                 male = true;
             } else {
-                cout << "Choose name for the female baby tiger :" << endl;
+                cout << "Choose name for the female baby chicken :" << endl;
                 cin >> name;
                 male = false;
             }
-            Tiger *tigrou = new Tiger(male, name, 0);
-            tigrou->setMaturity(false);
-            addAnimal(tigrou);
+            Chicken *kfcou= new Chicken(male, name, 0);
+            kfcou->setMaturity(false);
+            addAnimal(kfcou);
         }
     }
 }
