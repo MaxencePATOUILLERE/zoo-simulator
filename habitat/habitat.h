@@ -23,9 +23,7 @@ public:
     bool getOvercrowding();
     string getAnimal();
     void addAnimal(Animal* animal);
-    int estimateTigerFood();
-    int estimateEagleFood();
-    int estimateChickenFood();
+    int estimateFood();
     void addDay();
     void giveFood();
     void checkHungryTiger();

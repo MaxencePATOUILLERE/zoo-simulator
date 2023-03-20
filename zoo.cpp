@@ -168,16 +168,20 @@ void Zoo::addMonth() {
 void Zoo::checkAnimals() {
     for (int i = 0; i < habitats.size(); i++) {
         habitats[i]->addDay();
-        if (habitats[i]->getAnimal() == "tiger") {
-            checkTiger(i);
-        }/* else if (habitats[i]->getAnimal() == "eagle"){
-            checkEagle(i);
-        }else{
-            checkChicken(i);
-        }*/
+        if (foods[0]->getKilos()>=habitats[i]->estimateFood()){
+            habitats[i]->giveFood();
+            foods[0]->removeKilos(habitats[i]->estimateTigerFood());
+        }else {
+            habitats[i]->checkHungryTiger();
+        }
+        habitats[i]->checkCouple(); // tout animal c'est fait
+        habitats[i]->checkGestation();
+        habitats[i]->isMatureTiger();
+        habitats[i]->checkTigerAge();
+        habitats[i]->checkSickTiger();
     }
 }
-
+/*
 void Zoo::checkTiger(int indexHabitat) {
     if (foods[0]->getKilos()>=habitats[indexHabitat]->estimateTigerFood()){
         habitats[indexHabitat]->giveFood();
@@ -185,10 +189,10 @@ void Zoo::checkTiger(int indexHabitat) {
     }else {
         habitats[indexHabitat]->checkHungryTiger();
     }
-    habitats[indexHabitat]->checkCouple();
+    habitats[indexHabitat]->checkCouple(); // tout animal c'est fait
     habitats[indexHabitat]->checkGestation();
     habitats[indexHabitat]->isMatureTiger();
     habitats[indexHabitat]->checkTigerAge();
     habitats[indexHabitat]->checkSickTiger();
-}
+}*/
 

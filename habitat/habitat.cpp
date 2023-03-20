@@ -18,47 +18,39 @@ void Habitat::addAnimal(Animal *animal) {
     animals.push_back(animal);
 }
 
-int Habitat::estimateTigerFood() {
+int Habitat::estimateFood() {
     int kilos = 0;
     for (int i = 0; i < animals.size(); i++) {
-        if (animals[i]->isMale()) {
-            kilos += 12;
-        } else if (!animals[i]->isMale() && animals[i]->isPregnant()) {
-            kilos += 20;
+        if(dynamic_cast<Tiger*>(animals[i])!= nullptr){
+            if (animals[i]->isMale()) {
+                kilos += 12;
+            } else if (!animals[i]->isMale() && animals[i]->isPregnant()) {
+                kilos += 20;
+            } else {
+                kilos += 10;
+            }
+        } else if (dynamic_cast<Eagle*>(animals[i])!= nullptr){
+            if (animals[i]->isMale()) {
+                kilos += 0.25;
+            } else if (!animals[i]->isMale() && animals[i]->isPregnant()) {
+                kilos += 0.6;
+            } else {
+                kilos += 0.3;
+            }
         } else {
-            kilos += 10;
+            if (animals[i]->isMale()) {
+                kilos += 0.15;
+            } else if (!animals[i]->isMale() && animals[i]->isPregnant()) {
+                kilos += 0.36;
+            } else {
+                kilos += 0.18;
+            }
         }
+
     }
     return kilos;
 }
 
-int Habitat::estimateEagleFood() {
-    float kilos = 0;
-    for (int i = 0; i < animals.size(); i++) {
-        if (animals[i]->isMale()) {
-            kilos += 0.25;
-        } else if (!animals[i]->isMale() && animals[i]->isPregnant()) {
-            kilos += 0.6;
-        } else {
-            kilos += 0.3;
-        }
-    }
-    return kilos;
-}
-
-int Habitat::estimateChickenFood() {
-    float kilos = 0;
-    for (int i = 0; i < animals.size(); i++) {
-        if (animals[i]->isMale()) {
-            kilos += 0.15;
-        } else if (!animals[i]->isMale() && animals[i]->isPregnant()) {
-            kilos += 0.36;
-        } else {
-            kilos += 0.18;
-        }
-    }
-    return kilos;
-}
 
 void Habitat::addDay() {
     for (int i = 0; i < animals.size(); i++) {
