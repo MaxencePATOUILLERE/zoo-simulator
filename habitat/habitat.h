@@ -39,6 +39,10 @@ public:
     void checkTigerAge();
 
     void checkSickTiger();
+
+    void addEaglouglou();
+
+    void addaddKfc();
 };
 
 #endif

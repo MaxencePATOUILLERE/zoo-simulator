@@ -168,13 +168,22 @@ void Zoo::addMonth() {
 void Zoo::checkAnimals() {
     for (int i = 0; i < habitats.size(); i++) {
         habitats[i]->addDay();
-        if (foods[0]->getKilos()>=habitats[i]->estimateFood()){
-            habitats[i]->giveFood();
-            foods[0]->removeKilos(habitats[i]->estimateFood());
-        }else {
-            habitats[i]->checkHungry();
+        if (habitats[i]->getAnimal()=="tiger"){
+            if (foods[0]->getKilos()>=habitats[i]->estimateFood()){
+                habitats[i]->giveFood();
+                foods[0]->removeKilos(habitats[i]->estimateFood());
+            }else {
+                habitats[i]->checkHungry();
+            }
+        } else {
+            if (foods[1]->getKilos()>=habitats[i]->estimateFood()){
+                habitats[i]->giveFood();
+                foods[1]->removeKilos(habitats[i]->estimateFood());
+            }else {
+                habitats[i]->checkHungry();
         }
-        habitats[i]->checkCouple(); // tout animal c'est fait
+        habitats[i]->checkCouple();
+
         habitats[i]->checkGestation();
         habitats[i]->isMatureTiger();
         habitats[i]->checkTigerAge();

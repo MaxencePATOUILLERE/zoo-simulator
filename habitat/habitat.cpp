@@ -152,15 +152,71 @@ void Habitat::isMatureTiger() {
 
 void Habitat::checkGestation() {
     for (int i = 0; i < animals.size(); i++) {
-        if (animals[i]->isPregnant() && animals[i]->pregnantSince() == 90) {
-            animals[i]->birth();
-            cout << "?" << endl;
-            addTigrous();
+        if (dynamic_cast<Tiger*>(animals[i])!= nullptr){
+            if (animals[i]->isPregnant() && animals[i]->pregnantSince() == 90) {
+                animals[i]->birth();
+                cout << animals[i]->getName() << "start birth"<<endl;
+                addTigrous();
+            }
+        } else if (dynamic_cast<Eagle*>(animals[i])!= nullptr){
+            if (animals[i]->isPregnant() && animals[i]->pregnantSince() == 45) {
+                animals[i]->birth();
+                cout << animals[i]->getName() << "start birth"<<endl;
+                addEaglouglou();
+            }
+        } else {
+            if (animals[i]->isPregnant() && animals[i]->pregnantSince() == 42) {
+                animals[i]->birth();
+                cout << animals[i]->getName() << "start birth"<<endl;
+                addFriedChicken();
+            }
         }
     }
 }
 
 void Habitat::addTigrous() {
+    for (int i = 0; i < 3; i++) {
+        int dead = rand() % 3 + 1;
+        if (dead != 3) {
+            bool male;
+            string name;
+            if (dead == 1) {
+                cout << "Choose name for the male baby tiger :" << endl;
+                cin >> name;
+                male = true;
+            } else {
+                cout << "Choose name for the female baby tiger :" << endl;
+                cin >> name;
+                male = false;
+            }
+            Tiger *tigrou = new Tiger(male, name, 0);
+            tigrou->setMaturity(false);
+            addAnimal(tigrou);
+        }
+    }
+}
+void Habitat::addEaglouglou() {
+    for (int i = 0; i < 3; i++) {
+        int dead = rand() % 3 + 1;
+        if (dead != 3) {
+            bool male;
+            string name;
+            if (dead == 1) {
+                cout << "Choose name for the male baby tiger :" << endl;
+                cin >> name;
+                male = true;
+            } else {
+                cout << "Choose name for the female baby tiger :" << endl;
+                cin >> name;
+                male = false;
+            }
+            Tiger *tigrou = new Tiger(male, name, 0);
+            tigrou->setMaturity(false);
+            addAnimal(tigrou);
+        }
+    }
+}
+void Habitat::addKfc() {
     for (int i = 0; i < 3; i++) {
         int dead = rand() % 3 + 1;
         if (dead != 3) {
@@ -210,6 +266,7 @@ void Habitat::checkSickTiger() {
         }
     }
 }
+
 
 
 
