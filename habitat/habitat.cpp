@@ -80,7 +80,7 @@ void Habitat::checkCouple() {
         if (!animals[i]->isMale() && animals[i]->isMature() && !animals[i]->isHungry() && !animals[i]->isSick() && !animals[i]->isPregnant() && !animals[i]->getWaitNextPregnant()) {
             gotValideFemale = true;
             valideFemaleIndex = i;
-        } else if (animals[i]->getlastTimePregnant() == 90) {
+        } else if ((dynamic_cast<Tiger*> (animals[i]) != nullptr && animals[i]->getlastTimePregnant() == 90) || (dynamic_cast<Eagle*> (animals[i])!= nullptr && animals[i]->getlastTimePregnant()==45)  || (dynamic_cast<Chicken*> (animals[i])!= nullptr && animals[i]->getlastTimePregnant()==42)) {
             gotValideFemale = true;
             valideFemaleIndex = i;
         }
