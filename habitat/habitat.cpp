@@ -255,19 +255,33 @@ void Habitat::addKfc() {
     }
 }
 
-void Habitat::checkTigerAge() {
+void Habitat::checkAge() {
     for (int i = 0; i < animals.size(); i++) {
-        if (animals[i]->getAge() == 168) {
+        if ((animals[i]->getAge() == 350 && (dynamic_cast<Tiger*>(animals[i])!= nullptr || dynamic_cast<Eagle*>(animals[i])!= nullptr)) || (dynamic_cast<Chicken*>(animals[i])!=nullptr && animals[i]->getAge() == 180)) {
             animals[i]->killAnimal();
             animals.erase(animals.begin() + i);
         }
     }
 }
 
-void Habitat::checkSickTiger() {
-    double proba_annuelle = 0.3; // probabilité annuelle de tomber malade
-    double proba_quotidienne = 1 - pow(1 - proba_annuelle, 1.0 / 365.0); // probabilité quotidienne de tomber malade
+void Habitat::checkSick() {
+    double proba_annuelle;
+    double proba_quotidienne;
+    int duringSickness;
     for (int i = 0; i < animals.size(); i++) {
+        if (dynamic_cast<Tiger*>(animals[i])!= nullptr){
+            proba_annuelle = 0.3;
+            proba_quotidienne = 1 - pow(1 - proba_annuelle, 1.0 / 365.0);
+            duringSickness = 15;
+        } else if (dynamic_cast<Tiger*>(animals[i])!= nullptr){
+            proba_annuelle = 0.1;
+            proba_quotidienne = 1 - pow(1 - proba_annuelle, 1.0 / 365.0);
+            duringSickness = 30;
+        } else {
+            proba_annuelle = 0.05;
+            proba_quotidienne = 1 - pow(1 - proba_annuelle, 1.0 / 365.0);
+            duringSickness = 5;
+        }
         double probabilite = static_cast<double>(rand()) / RAND_MAX;
         if (probabilite < proba_quotidienne) {
             cout << "tomber malade" << endl;
@@ -278,7 +292,7 @@ void Habitat::checkSickTiger() {
             }
             animals[i]->setSick(true);
         }
-        if (animals[i]->getSickSince() == 15) {
+        if (animals[i]->getSickSince() == duringSickness) {
             animals[i]->setSick(false);
         }
     }

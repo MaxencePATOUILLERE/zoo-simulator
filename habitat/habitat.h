@@ -31,8 +31,8 @@ public:
     void checkCouple();
     void checkGestation();
     void addTigrous();
-    void checkTigerAge();
-    void checkSickTiger();
+    void checkAge();
+    void checkSick();
     void addEaglouglou();
     void addKfc();
 };
