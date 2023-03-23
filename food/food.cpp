@@ -1,14 +1,14 @@
 #include "food.h"
 
-int Food::getKilos() {
+double Food::getKilos() {
     return m_kilos;
 }
 
-void Food::addKilos(int kilos) {
+void Food::addKilos(double kilos) {
     m_kilos+=kilos;
 }
 
 
-void Food::removeKilos(int kilos) {
+void Food::removeKilos(double kilos) {
     m_kilos-=kilos;
 }

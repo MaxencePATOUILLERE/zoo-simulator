@@ -19,11 +19,9 @@ public:
     virtual int estimateBuyPrice()=0;
     virtual int estimateSellPrice()=0;
     int getCapacity();
-    void setOvercrowding();
-    bool getOvercrowding();
     string getAnimal();
     void addAnimal(Animal* animal);
-    int estimateFood();
+    double estimateFood();
     void addDay();
     void giveFood();
     void checkHungry();

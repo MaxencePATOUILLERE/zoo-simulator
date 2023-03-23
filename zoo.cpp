@@ -190,3 +190,11 @@ void Zoo::checkAnimals() {
         }
     }
 }
+
+void Zoo::addcage(Habitat *pCage) {
+    habitats.push_back(pCage);
+}
+
+void Zoo::addanimal(Animal *animal, int index) {
+    habitats[0]->addAnimal(animal);
+}

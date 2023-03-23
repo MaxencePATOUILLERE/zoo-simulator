@@ -18,8 +18,8 @@ void Habitat::addAnimal(Animal *animal) {
     animals.push_back(animal);
 }
 
-int Habitat::estimateFood() {
-    int kilos = 0;
+double Habitat::estimateFood() {
+    double kilos = 0;
     for (int i = 0; i < animals.size(); i++) {
         if(dynamic_cast<Tiger*>(animals[i])!= nullptr){
             if (animals[i]->isMale()) {

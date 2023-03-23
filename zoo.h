@@ -8,6 +8,9 @@
 #include "./food/food.h"
 #include "./habitat/habitat.h"
 #include "resources.h"
+#include "tiger_cage.h"
+#include "tiger.h"
+
 using namespace std;
 
 class Zoo{
@@ -16,9 +19,11 @@ class Zoo{
     vector<Habitat*>habitats;
     vector<Food*>foods;
     Time *m_time = new Time(0,0);
+
 public:
     Zoo(string name,int money)
     :m_name(name),m_money(money){};
+    void addcage(Habitat *pCage);
     void buyAnimal(Animal* animal);
     void sellAnimal(Animal* animal);
     void buyFood(string foodname, int kilo);
@@ -32,9 +37,7 @@ public:
     void initFood();
     void addMonth();
     void checkAnimals();
-    void checkTiger(int indexHabitat);
-    void checkEagle(int indexHabitat);
-    void checkChicken(int indexHabitat);
+    void addanimal(Animal *animal, int index);
 };
 
 #endif

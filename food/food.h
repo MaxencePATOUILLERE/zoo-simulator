@@ -6,13 +6,12 @@
 using namespace std;
 
 class Food{
-    int m_kilos=0;
-    int m_price=0; // pas utilisé
+    double m_kilos=0;
 public:
-    Food(int kilos):m_kilos(kilos){};
-    void addKilos(int kilos);
-    int getKilos();
-    void removeKilos(int kilos);
+    Food(double kilos):m_kilos(kilos){};
+    void addKilos(double kilos);
+    double getKilos();
+    void removeKilos(double kilos);
 };
 
 #endif

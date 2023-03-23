@@ -71,9 +71,31 @@ void MenuActions::createZoo() {
     string zoo_name;
     cout << "Choose a name for the zoo: ";
     cin >> zoo_name;
-    Zoo *zoo = new Zoo(zoo_name, 1000000000);
+    Zoo *zoo = new Zoo(zoo_name, 80000);
     m_zoo = zoo;
     m_zoo->initFood();
+    m_zoo->addcage(new Tiger_cage("tiger_cage", 0, 10));
+    m_zoo->addanimal(new Tiger(true, "TigreMale1", 84), 0);
+    m_zoo->addanimal(new Tiger(false, "TigreFemale1", 84), 0);
+    m_zoo->addanimal(new Tiger(true, "TigreMale2", 84), 0);
+    m_zoo->addanimal(new Tiger(false, "TigreFemale2", 84), 0);
+    m_zoo->addcage(new Eagle_cage("eagle_cage", 0, 10));
+    m_zoo->addanimal(new Eagle(true, "EagleMale1", 60), 1);
+    m_zoo->addanimal(new Eagle(false, "EagleFemale1", 60), 1);
+    m_zoo->addanimal(new Eagle(true, "EagleMale2", 60), 1);
+    m_zoo->addanimal(new Eagle(false, "EagleFemale2", 60), 1);
+    m_zoo->addcage(new Chicken_cage("chicken_cage", 0, 12));
+    m_zoo->addanimal(new Chicken(true, "ChickenMale1", 10), 2);
+    m_zoo->addanimal(new Eagle(false, "ChickenFemale1", 10), 2);
+    m_zoo->addanimal(new Eagle(false, "ChickenFemale2", 10), 2);
+    m_zoo->addanimal(new Eagle(false, "ChickenFemale3", 10), 2);
+    m_zoo->addanimal(new Eagle(false, "ChickenFemale4", 10), 2);
+    m_zoo->addanimal(new Eagle(false, "ChickenFemale5", 10), 2);
+    m_zoo->addanimal(new Eagle(false, "ChickenFemale6", 10), 2);
+    m_zoo->addanimal(new Eagle(false, "ChickenFemale7", 10), 2);
+    m_zoo->addanimal(new Eagle(false, "ChickenFemale8", 10), 2);
+    m_zoo->addanimal(new Eagle(false, "ChickenFemale9", 10), 2);
+    m_zoo->addanimal(new Eagle(false, "ChickenFemale10", 10), 2);
 }
 
 void MenuActions::buyAnimal() {
