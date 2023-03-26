@@ -12,3 +12,4 @@ int Tiger::estimateBuyPrice() {
         return 60000;
     }
 }
+

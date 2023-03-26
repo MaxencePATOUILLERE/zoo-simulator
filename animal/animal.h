@@ -49,6 +49,7 @@ public:
     void birth();
     void setSick(bool b);
     int getSickSince();
+    void deleteAnimal();
 };
 
 #endif

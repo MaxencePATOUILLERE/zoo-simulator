@@ -11,6 +11,7 @@ class MenuActions {
     bool is_male();
     int choose_age_animal();
     int choose_food();
+
     void buyAnimal();
     void buyFood();
     void buyHabitat();

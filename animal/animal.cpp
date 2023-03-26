@@ -51,6 +51,7 @@ int Animal::isHungrySince() {
 }
 
 void Animal::killAnimal() {
+    cout << "The animal " << m_name << " is dead this night" << endl;
     Animal::~Animal();
 }
 
@@ -63,7 +64,6 @@ void Animal::setPregenant(bool pregenant) {
 }
 
 Animal::~Animal() {
-    cout << "The animal " << m_name << " is dead this night" << endl;
 }
 
 void Animal::setMaturity(bool maturity) {
@@ -121,4 +121,8 @@ void Animal::setSick(bool sick) {
 
 int Animal::getSickSince() {
     return m_sickSince;
+}
+
+void Animal::deleteAnimal() {
+    Animal::~Animal();
 }

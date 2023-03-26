@@ -33,6 +33,9 @@ public:
     void checkSick();
     void addEaglouglou();
     void addKfc();
+    vector <int> showListAnimal();
+    int estimateSellPriceByIndex(int index);
+    void removeAnimal(int i);
 };
 
 #endif

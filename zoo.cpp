@@ -46,7 +46,47 @@ void Zoo::buyAnimal(Animal *animal) {
 }
 
 void Zoo::sellAnimal(Animal *animal) {
+    int indexHabitat;
+    bool good = false;
+    if (checkHabitat(animal)) {
+        vector<int> specificHabitat = showSpecificHabitat(animal);
+        cout << "You can sell an animal in habitat number: ";
+        for (int i = 0; i < specificHabitat.size(); i++) {
+            cout << specificHabitat[i] << ",";
+            while (!good) {
+                cout << endl << "Choose the habitat for your animal you are selling" << endl;
+                cin >> indexHabitat;
+                for (int i = 0; i < specificHabitat.size(); i++) {
+                    if (indexHabitat == specificHabitat[i]) {
+                        good = true;
+                        break;
+                    }
+                }
+            }
+        }
+        int indexAnimal;
+        good = false;
+        vector<int> specificAnimal = habitats[indexHabitat]->showListAnimal();
+        while (!good) {
+            cout << endl << "Choose the animal :";
+            for (int i = 0 ; i < specificAnimal.size(); i++){
+                cout << specificAnimal[i] << ",";
+            }
+            cout << endl;
+            cin >> indexAnimal;
+            for (int i = 0; i < specificAnimal.size(); i++) {
+                if (indexAnimal == specificAnimal[i]) {
+                    good = true;
+                    break;
+                }
+            }
+        }
+        m_money += habitats[indexHabitat]->estimateSellPriceByIndex(indexAnimal);
+        habitats[indexHabitat]->removeAnimal(indexAnimal);
+        cout << "You have: " << getMoney() << "money" << endl;
+    }
 }
+
 
 void Zoo::buyFood(string foodname, int kilos) {
     if (foodname == "meat") {
@@ -196,5 +236,5 @@ void Zoo::addcage(Habitat *pCage) {
 }
 
 void Zoo::addanimal(Animal *animal, int index) {
-    habitats[0]->addAnimal(animal);
+    habitats[index]->addAnimal(animal);
 }

@@ -96,6 +96,7 @@ void MenuActions::createZoo() {
     m_zoo->addanimal(new Eagle(false, "ChickenFemale8", 10), 2);
     m_zoo->addanimal(new Eagle(false, "ChickenFemale9", 10), 2);
     m_zoo->addanimal(new Eagle(false, "ChickenFemale10", 10), 2);
+    cout << ">>> YOU NEED TO BUY FOODS <<<" << endl;
 }
 
 void MenuActions::buyAnimal() {
@@ -125,6 +126,28 @@ void MenuActions::buyAnimal() {
                 m_zoo->buyAnimal(poulette);
             }
                 break;
+        }
+    } else {
+        switch (MenuActions::choose_animal()){
+            case 1: {
+                Tiger *test = new Tiger (true, "test tiger", 48);
+                m_zoo->sellAnimal(test);
+                test->deleteAnimal();
+
+                break;
+            }
+            case 2:{
+                Eagle *test = new Eagle (true, "test eagle", 48);
+                m_zoo->sellAnimal(test);
+                test->deleteAnimal();
+                break;
+            }
+            case 3:{
+                Chicken *test = new Chicken (true, "test chicken", 48);
+                m_zoo->sellAnimal(test);
+                test->deleteAnimal();
+                break;
+            }
         }
     }
 }

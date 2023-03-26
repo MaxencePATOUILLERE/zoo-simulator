@@ -298,6 +298,22 @@ void Habitat::checkSick() {
     }
 }
 
+vector<int> Habitat::showListAnimal() {
+    vector<int>index;
+    for( int i = 0; i < animals.size(); i++){
+        index.push_back(i);
+    }
+    return index;
+}
+
+void Habitat::removeAnimal(int i) {
+    animals.erase(animals.begin() + i);
+}
+
+int Habitat::estimateSellPriceByIndex(int index) {
+    return (animals[index]->estimateBuyPrice())/2;
+}
+
 
 
 
