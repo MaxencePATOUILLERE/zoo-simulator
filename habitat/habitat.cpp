@@ -314,7 +314,15 @@ int Habitat::estimateSellPriceByIndex(int index) {
     return (animals[index]->estimateBuyPrice())/2;
 }
 
+void Habitat::sell(){
+    delete this;
+}
 
+Habitat::~Habitat(){
+    for (int i = 0; i < animals.size(); i++) {
+        delete animals[i];
+    }
+}
 
 
 

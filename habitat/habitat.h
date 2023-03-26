@@ -36,6 +36,9 @@ public:
     vector <int> showListAnimal();
     int estimateSellPriceByIndex(int index);
     void removeAnimal(int i);
+    void sell();
+    ~Habitat();
+
 };
 
 #endif

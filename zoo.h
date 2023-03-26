@@ -19,7 +19,11 @@ class Zoo{
     vector<Habitat*>habitats;
     vector<Food*>foods;
     Time *m_time = new Time(0,0);
-
+    enum AnimalType {
+        TIGER,
+        EAGLE,
+        CHICKEN
+    };
 public:
     Zoo(string name,int money)
     :m_name(name),m_money(money){};
@@ -28,7 +32,7 @@ public:
     void sellAnimal(Animal* animal);
     void buyFood(string foodname, int kilo);
     void buyHabitat(Habitat* habitat);
-    void sellHabitat(Habitat* habitat);
+    void sellHabitat();
     bool canBuyAnimal(Animal* animal);
     bool canBuyHabitat(Habitat* habitat);
     int getMoney();
@@ -38,6 +42,8 @@ public:
     void addMonth();
     void checkAnimals();
     void addanimal(Animal *animal, int index);
+    void suppr();
+    int getNumberOf(AnimalType animal);
 };
 
 #endif

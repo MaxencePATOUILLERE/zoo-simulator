@@ -96,7 +96,9 @@ void MenuActions::createZoo() {
     m_zoo->addanimal(new Eagle(false, "ChickenFemale8", 10), 2);
     m_zoo->addanimal(new Eagle(false, "ChickenFemale9", 10), 2);
     m_zoo->addanimal(new Eagle(false, "ChickenFemale10", 10), 2);
-    cout << ">>> YOU NEED TO BUY FOODS <<<" << endl;
+
+    cout << ">>> GOOD LUCK FOR YOUR SIMULATION OF ZOO<<< " <<endl;
+    cout << ">>> YOU SHOULD BUY FOODS FOR YOUR ANIMALS <<<" << endl;
 }
 
 void MenuActions::buyAnimal() {
@@ -184,28 +186,36 @@ void MenuActions::buyHabitat() {
                 break;
             }
         }
+    } else  {
+        m_zoo->sellHabitat();
     }
 }
 
 void MenuActions::chooseAction() {
     int action = 0;
-    cout << "Choose an action:\n1. Buy/Sell animal\n2. Buy food\n3. Buy/Sell habitat\n4. Next turn" << endl;
+    cout << "Choose an action:\n1. Buy/Sell animal\n2. Buy food\n3. Buy/Sell habitat\n4. Next turn \n5. End the simulation" << endl;
     cin >> action;
     switch (action) {
-        case 1:{
+        case 1: {
             MenuActions::buyAnimal();
             break;
         }
-        case 2:{
+        case 2: {
             MenuActions::buyFood();
             break;
         }
-        case 3:{
+        case 3: {
             MenuActions::buyHabitat();
             break;
         }
-        case 4:{
+        case 4: {
             m_zoo->addMonth();
+            break;
+        }
+        case 5: {
+            m_zoo->suppr();
+            delete this;
+            break;
         }
     }
 }

@@ -125,7 +125,32 @@ void Zoo::buyHabitat(Habitat *habitat) {
     cout << "You don't have enough money" << endl;
 };
 
-void Zoo::sellHabitat(Habitat *habitat) {
+void Zoo::sellHabitat() {
+    vector<int> index;
+    bool good;
+    int choice;
+    if (habitats.size() ==0){
+        cout << "You don't have habitat"<<endl;
+        return;
+    }
+    cout << "Which habitat you want to sell (if you sell an habitat with animals you will loose them) : ";
+    for (int i = 0; i < habitats.size();i++) {
+        cout << i << ",";
+    }
+    while (!good) {
+        cout << endl << "Choose the habitat for your animal you are selling" << endl;
+        cin >> choice;
+        for (int i = 0; i < habitats.size(); i++) {
+            if (choice == i) {
+                good = true;
+                break;
+            }
+        }
+    }
+    m_money+=habitats[choice]->estimateBuyPrice()/4;
+    habitats[choice]->sell();
+    habitats.erase(habitats.begin() + choice);
+    cout << "You have: " << getMoney() << "money" << endl;
 }
 
 bool Zoo::canBuyAnimal(Animal *animal) {
@@ -189,20 +214,21 @@ void Zoo::initFood() {
 }
 
 void Zoo::addMonth() {
+    double total;
     for (int i = 1; i < 31; i++) {
         m_time->setDay(1);
         checkAnimals();
+        double visitor_number;
+        if (m_time->getMonth()==5 || m_time->getMonth()==6 || m_time->getMonth()==7 || m_time->getMonth()==8 || m_time->getMonth()==9){
+            visitor_number = ((getNumberOf(TIGER) * 30 + getNumberOf(EAGLE) * 15 + getNumberOf(CHICKEN) * 2)) / 31;
+        }else{
+            visitor_number = ((getNumberOf(TIGER) * 5 + getNumberOf(EAGLE) * 7 + getNumberOf(CHICKEN) * 0.5)) / 31;
+        }
+        total += visitor_number;
+        m_money+= visitor_number * 60;
+
     }
-    /*
-    int visitor_number;
-     a refaire
-    if (m_time->getMonth()==5 || m_time->getMonth()==6 || m_time->getMonth()==7 || m_time->getMonth()==8 || m_time->getMonth()==9){
-        visitor_number = rand() % 500 + 900;
-    }else{
-        visitor_number = rand() % 200 + 400;
-    }
-    m_money+= visitor_number * 60;
-     */
+    cout << "You win " << total * 60 << " dollars during the month"<<endl;
 }
 
 void Zoo::checkAnimals() {
@@ -237,4 +263,39 @@ void Zoo::addcage(Habitat *pCage) {
 
 void Zoo::addanimal(Animal *animal, int index) {
     habitats[index]->addAnimal(animal);
+}
+
+void Zoo::suppr() {
+    delete this;
+}
+
+int Zoo::getNumberOf(AnimalType animal) {
+    int animals;
+    switch (animal){
+        case TIGER:{
+            for (int i = 0; i < habitats.size(); i++){
+                if (habitats[i]->getAnimal()=="tiger"){
+                    animals += habitats[i]->showListAnimal().size();
+                }
+            }
+            break;
+        }
+        case EAGLE:{
+            for (int i = 0; i < habitats.size(); i++){
+                if (habitats[i]->getAnimal()=="eagle"){
+                    animals += habitats[i]->showListAnimal().size();
+                }
+            }
+            break;
+        }
+        case CHICKEN:{
+            for (int i = 0; i < habitats.size(); i++){
+                if (habitats[i]->getAnimal()=="chicken"){
+                    animals += habitats[i]->showListAnimal().size();
+                }
+            }
+            break;
+        }
+    }
+    return animals;
 }
